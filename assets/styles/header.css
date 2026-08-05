@@ -1,0 +1,55 @@
+/* ===========================
+   HEADER
+=========================== */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  font-size: 14px;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  gap: 50px;
+}
+
+.header-left nav {
+  display: flex;
+  gap: 35px;
+}
+
+.header-right {
+  gap: 35px;
+}
+
+.header-right a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-left a,
+.header-right a {
+  font-weight: 400;
+}
+
+.header-left a:hover,
+.header-right a:hover {
+  text-shadow: 0 0 0.5px;
+}
+
+.header-left img {
+  height: 45px;
+}
+
+.header-right img {
+  width: 15px;
+  height: 15px;
+}

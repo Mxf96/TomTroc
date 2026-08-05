@@ -1,0 +1,29 @@
+/* ===========================
+   RESET
+=========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   GÉNÉRAL
+=========================== */
+
+body {
+  background-color: #f5f3ef;
+  font-family: "Inter", sans-serif;
+  color: #292929;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
