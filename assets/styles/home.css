@@ -1,8 +1,699 @@
-h1 {
-  font-family: "Playfair Display", serif;
+/* ===========================
+    HOME
+   =========================== */
+
+.home {
+  background-color: #f5f3ef;
+}
+
+/* ===========================
+    HERO
+   =========================== */
+
+.home__hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 85px;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 45px 30px 75px;
+}
+
+.home__hero-content {
+  width: 280px;
+}
+
+.home__hero-content h1 {
+  margin: 0 0 18px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.05;
+
+  color: #292929;
+}
+
+.home__hero-content p {
+  margin: 0 0 30px;
+  font-size: 12px;
+  line-height: 1.25;
+  color: #292929;
+}
+
+.home__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 135px;
+  height: 48px;
+  padding: 0 22px;
+  background-color: #00ac66;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home__button:hover {
+  background-color: #009c5c;
+}
+
+.home__hero-image {
+  width: 365px;
+}
+
+.home__hero-image img {
+  display: block;
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+}
+
+.home__hero-image p {
+  margin: 10px 0 0;
+  text-align: right;
+  font-size: 12px;
+  font-style: italic;
+  color: #a6a6a6;
+}
+
+/* ===========================
+    DERNIERS LIVRES
+   =========================== */
+
+.home__books {
+  padding: 75px 30px 60px;
+  background-color: #ffffff;
   text-align: center;
 }
 
-p {
+.home__books h2 {
+  margin: 0 0 65px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+}
+
+/* ===========================
+    LISTE DES LIVRES
+   =========================== */
+
+.home__books-list {
+  display: grid;
+  grid-template-columns: repeat(4, 180px);
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 42px;
+}
+
+/* ===========================
+    CARTE LIVRE
+   =========================== */
+
+.book-card {
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 0 0 7px 7px;
+  text-align: left;
+}
+
+.book-card a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.book-card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.book-card__content {
+  min-height: 95px;
+  padding: 16px 13px 14px;
+}
+
+.book-card__content h3 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.book-card__author {
+  margin: 0 0 20px;
+  font-size: 10px;
+  color: #a6a6a6;
+}
+
+.book-card__owner {
+  margin: 0;
+  font-size: 9px;
+  font-style: italic;
+  color: #a6a6a6;
+}
+
+/* ===========================
+    BOUTON "VOIR TOUS LES LIVRES"
+   =========================== */
+
+.home__button--books {
+  min-width: 195px;
+}
+
+/* ===========================
+    COMMENT ÇA MARCHE
+   =========================== */
+
+.home__how-it-works {
+  padding: 70px 30px 70px;
+  background-color: #f5f3ef;
   text-align: center;
+}
+
+.home__how-it-works-header h2 {
+  margin: 0 0 20px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.home__how-it-works-header p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #292929;
+}
+
+/* ===========================
+    ÉTAPES
+   =========================== */
+
+.home__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 195px);
+  justify-content: center;
+  gap: 32px;
+  margin: 40px 0;
+}
+
+.home__step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.home__step p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #292929;
+}
+
+/* ===========================
+    BOUTON CONTOUR VERT
+   =========================== */
+
+.home__button--outline {
+  min-width: 195px;
+  background-color: transparent;
+  color: #00ac66;
+  border: 1px solid #00ac66;
+}
+
+.home__button--outline:hover {
+  background-color: #00ac66;
+  color: #ffffff;
+}
+
+/* ===========================
+    GRANDE IMAGE
+   =========================== */
+
+.home__banner {
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+}
+
+.home__banner img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===========================
+    NOS VALEURS
+   =========================== */
+
+.home__values {
+  padding: 75px 30px 80px;
+  background-color: #f5f3ef;
+}
+
+.home__values-content {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.home__values h2 {
+  margin: 0 0 28px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.home__values-content > p {
+  margin: 0 0 18px;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #292929;
+}
+
+.home__values-content .home__values-signature {
+  margin-top: 30px;
+  font-size: 9px;
+  font-style: italic;
+  color: #a6a6a6;
+}
+
+/* ===========================
+    CŒUR
+   =========================== */
+
+.home__values-heart {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -15px;
+  margin-right: -70px;
+}
+
+.home__values-heart img {
+  display: block;
+  width: 110px;
+  height: auto;
+}
+
+/* ===========================
+    RESPONSIVE
+   =========================== */
+
+@media screen and (max-width: 768px) {
+  /* ============================
+      HERO
+    =========================== */
+
+  .home__hero {
+    flex-direction: column-reverse;
+    gap: 30px;
+    max-width: 100%;
+    padding: 0 25px 50px;
+  }
+
+  .home__hero-image {
+    width: 80%;
+  }
+
+  .home__hero-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .home__hero-image p {
+    margin: 8px 0 0;
+    font-size: 10px;
+  }
+
+  .home__hero-content {
+    width: 100%;
+  }
+
+  .home__hero-content h1 {
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .home__hero-content p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .home__hero-content .home__button {
+    width: 100%;
+  }
+
+  /* ===========================
+      DERNIERS LIVRES
+    =========================== */
+
+  .home__books {
+    padding: 55px 25px;
+  }
+
+  .home__books h2 {
+    margin-bottom: 40px;
+    font-size: 24px;
+  }
+
+  .home__books-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: 100%;
+    max-width: 420px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 35px;
+  }
+
+  .book-card {
+    width: 100%;
+  }
+
+  .book-card img {
+    width: 100%;
+    height: 170px;
+  }
+
+  .book-card__content {
+    min-height: 100px;
+
+    padding: 12px 10px;
+  }
+
+  .book-card__content h3 {
+    font-size: 11px;
+  }
+
+  .book-card__author {
+    margin-bottom: 15px;
+    font-size: 9px;
+  }
+
+  .book-card__owner {
+    font-size: 8px;
+  }
+
+  .home__button--books {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* ===========================
+      COMMENT ÇA MARCHE
+    =========================== */
+
+  .home__how-it-works {
+    padding: 55px 25px;
+  }
+
+  .home__how-it-works-header h2 {
+    font-size: 24px;
+  }
+
+  .home__how-it-works-header p {
+    font-size: 11px;
+  }
+
+  .home__steps {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    width: 100%;
+    max-width: 350px;
+    margin: 35px auto;
+  }
+
+  .home__step {
+    width: 100%;
+    height: 100px;
+
+    padding: 20px;
+  }
+
+  .home__step p {
+    font-size: 10px;
+  }
+
+  .home__button--outline {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  /* ===========================
+      GRANDE IMAGE
+    =========================== */
+
+  .home__banner {
+    height: 320px;
+  }
+
+  .home__banner img {
+    object-position: center;
+  }
+
+  /* ===========================
+      NOS VALEURS
+    =========================== */
+
+  .home__values {
+    padding: 55px 25px 60px;
+  }
+
+  .home__values-content {
+    max-width: 100%;
+  }
+
+  .home__values h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+  }
+
+  .home__values-content > p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .home__values-content .home__values-signature {
+    margin-top: 25px;
+    font-size: 9px;
+  }
+
+  .home__values-heart {
+    justify-content: center;
+    margin-top: 25px;
+    margin-right: 0;
+  }
+
+  .home__values-heart img {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  /* ===========================
+      HERO
+    =========================== */
+
+  .home__hero {
+    padding: 0 20px 45px;
+  }
+
+  .home__hero-content h1 {
+    font-size: 25px;
+  }
+
+  .home__hero-content p {
+    font-size: 11px;
+  }
+
+  /* ===========================
+      DERNIERS LIVRES
+    =========================== */
+
+  .home__books {
+    padding: 50px 20px;
+  }
+
+  .home__books h2 {
+    font-size: 22px;
+  }
+
+  .home__books-list {
+    gap: 14px;
+  }
+
+  .book-card img {
+    height: 150px;
+  }
+
+  .book-card__content {
+    padding: 11px 8px;
+  }
+
+  /* ===========================
+      COMMENT ÇA MARCHE
+    =========================== */
+
+  .home__how-it-works {
+    padding: 50px 20px;
+  }
+
+  .home__how-it-works-header h2 {
+    font-size: 22px;
+  }
+
+  .home__steps {
+    gap: 15px;
+  }
+
+  .home__step {
+    height: 95px;
+  }
+
+  /* ===========================
+     GRANDE IMAGE
+    =========================== */
+
+  .home__banner {
+    height: 285px;
+  }
+
+  /* ===========================
+     NOS VALEURS
+    =========================== */
+
+  .home__values {
+    padding: 50px 20px;
+  }
+
+  .home__values h2 {
+    font-size: 22px;
+  }
+
+  .home__values-heart img {
+    width: 70px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .home__hero {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .home__hero-content h1 {
+    font-size: 23px;
+  }
+
+  .home__books {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .home__books-list {
+    gap: 12px;
+  }
+
+  .book-card img {
+    height: 140px;
+  }
+
+  .book-card__content h3 {
+    font-size: 10px;
+  }
+
+  .book-card__author {
+    font-size: 8px;
+  }
+
+  .book-card__owner {
+    font-size: 7px;
+  }
+
+  .home__how-it-works {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .home__banner {
+    height: 260px;
+  }
+
+  .home__values {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .home__hero {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .home__hero-content h1 {
+    font-size: 21px;
+  }
+
+  .home__hero-content p {
+    font-size: 10px;
+  }
+
+  .home__books {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .home__books h2 {
+    font-size: 20px;
+  }
+
+  .home__books-list {
+    gap: 10px;
+  }
+
+  .book-card img {
+    height: 125px;
+  }
+
+  .home__how-it-works {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .home__how-it-works-header h2 {
+    font-size: 20px;
+  }
+
+  .home__banner {
+    height: 230px;
+  }
+
+  .home__values {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .home__values h2 {
+    font-size: 20px;
+  }
 }

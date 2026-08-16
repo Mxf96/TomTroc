@@ -39,6 +39,20 @@
         <?= $pageContent ?>
     </main>
     <?php require_once TEMPLATE_VIEW_PATH . 'footer.php'; ?>
+
+    <script>
+        const burgerButton = document.querySelector('.burger-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        burgerButton.addEventListener('click', () => {
+            burgerButton.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+
+            const isOpen = mobileMenu.classList.contains('active');
+
+            burgerButton.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
 </body>
 
 </html>

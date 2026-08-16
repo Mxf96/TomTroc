@@ -1,8 +1,9 @@
 /* ===========================
-   HEADER
-=========================== */
+    HEADER
+   =========================== */
 
 header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,4 +53,123 @@ header {
 .header-right img {
   width: 15px;
   height: 15px;
+}
+
+/* ===========================
+    MENU BURGER
+   =========================== */
+
+.burger-button {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burger-button span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: #292929;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* ===========================
+   MENU MOBILE
+=========================== */
+
+header .mobile-menu {
+  display: none;
+}
+
+/* ===========================
+    RESPONSIVE
+   =========================== */
+
+@media screen and (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .header-left img {
+    height: 38px;
+  }
+
+  header .desktop-nav {
+    display: none;
+  }
+
+  .header-left {
+    gap: 0;
+  }
+
+  header .burger-button {
+    display: flex;
+
+    margin-left: auto;
+  }
+
+  /* ===========================
+      MENU DÉROULANT
+     =========================== */
+
+  header .mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    border-top: 1px solid #eeeeee;
+  }
+
+  header .mobile-menu.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  header .mobile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 0;
+    color: #292929;
+    border-bottom: 1px solid #eeeeee;
+    text-decoration: none;
+  }
+
+  header .mobile-menu a:last-child {
+    border-bottom: none;
+  }
+
+  header .mobile-menu img {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* ===========================
+      ANIMATION BURGER
+     =========================== */
+
+  header .burger-button.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  header .burger-button.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  header .burger-button.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
 }
