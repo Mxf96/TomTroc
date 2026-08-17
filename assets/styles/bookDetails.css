@@ -1,0 +1,281 @@
+/* ===========================
+  DÉTAIL D'UN LIVRE
+=========================== */
+
+.book-details {
+  background-color: #f5f3ef;
+}
+
+/* ===========================
+  FIL D'ARIANE
+=========================== */
+
+.book-details__breadcrumb {
+  width: 100%;
+  max-width: 1450px;
+  margin: 0 0 0 50px;
+  padding: 18px 30px;
+  font-size: 10px;
+  color: #a6a6a6;
+}
+
+.book-details__breadcrumb a {
+  color: #a6a6a6;
+  text-decoration: none;
+}
+
+.book-details__breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+  CONTENEUR
+=========================== */
+
+.book-details__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  min-height: 700px;
+}
+
+/* ===========================
+  IMAGE
+=========================== */
+
+.book-details__image {
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.book-details__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ===========================
+  CONTENU
+=========================== */
+
+.book-details__content {
+  display: flex;
+  flex-direction: column;
+  padding: 65px 85px;
+  background-color: #f5f3ef;
+}
+
+.book-details__content h1 {
+  margin: 0 0 15px;
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: #292929;
+}
+
+/* ===========================
+  AUTEUR
+=========================== */
+
+.book-details__author {
+  margin: 0;
+  font-size: 14px;
+  color: #a6a6a6;
+}
+
+/* ===========================
+  SÉPARATEUR
+=========================== */
+
+.book-details__separator {
+  width: 25px;
+  height: 1px;
+  margin: 30px 0;
+  background-color: #a6a6a6;
+}
+
+/* ===========================
+  DESCRIPTION
+=========================== */
+
+.book-details__description {
+  max-width: 500px;
+}
+
+.book-details__description h2,
+.book-details__owner h2 {
+  margin: 0 0 18px;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #292929;
+}
+
+.book-details__description p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #292929;
+}
+
+/* ===========================
+  PROPRIÉTAIRE
+=========================== */
+
+.book-details__owner {
+  margin-top: 35px;
+}
+
+.book-details__owner-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 18px 6px 6px;
+  background-color: #ffffff;
+  border-radius: 30px;
+  color: #292929;
+  text-decoration: none;
+}
+
+.book-details__owner-card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.book-details__owner-card span {
+  font-size: 12px;
+}
+
+/* ===========================
+  BOUTON MESSAGE
+=========================== */
+
+.book-details__message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: 55px;
+  margin-top: auto;
+  background-color: #00ac66;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.book-details__message:hover {
+  background-color: #009c5c;
+}
+
+/* ===========================
+  RESPONSIVE
+=========================== */
+
+@media screen and (max-width: 1439px) {
+  .book-details__image {
+    height: 675px;
+    margin: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .book-details__image {
+    height: 650px;
+    margin: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .book-details__image {
+    height: 600px;
+    margin: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .book-details__image {
+    height: 500px;
+    margin: 75px 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .book-details__breadcrumb {
+    display: none;
+  }
+
+  .book-details__container {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .book-details__image {
+    width: 95%;
+    height: auto;
+  }
+
+  .book-details__image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .book-details__content {
+    padding: 40px 25px 50px;
+  }
+
+  .book-details__content h1 {
+    font-size: 28px;
+  }
+
+  .book-details__author {
+    font-size: 12px;
+  }
+
+  .book-details__description {
+    max-width: 100%;
+  }
+
+  .book-details__description p {
+    font-size: 12px;
+  }
+
+  .book-details__owner {
+    margin-top: 30px;
+  }
+
+  .book-details__message {
+    max-width: 100%;
+    margin-top: 45px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .book-details__content {
+    padding: 35px 20px 45px;
+  }
+
+  .book-details__image {
+    width: 90%;
+    height: auto;
+    margin: 5px auto;
+  }
+
+  .book-details__content h1 {
+    font-size: 25px;
+  }
+
+  .book-details__description p {
+    font-size: 11px;
+  }
+}

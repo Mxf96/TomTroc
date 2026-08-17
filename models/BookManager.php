@@ -89,7 +89,8 @@ class BookManager
             b.created_at,
             b.updated_at,
             b.id_user,
-            u.username
+            u.username,
+            u.avatar
         FROM Books b
         INNER JOIN Users u ON b.id_user = u.id_user
         WHERE b.id_book = :id

@@ -1,18 +1,14 @@
 /* ===========================
-   FOOTER
+  FOOTER
 =========================== */
 
 footer {
   background-color: #ffffff;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
-
   gap: 35px;
-
   padding: 25px 80px;
-
   font-size: 14px;
 }
 
@@ -32,4 +28,49 @@ footer {
 
 .footer-logo img {
   height: 25px;
+}
+
+/* ===========================
+  RESPONSIVE
+=========================== */
+
+@media screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 35px 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .footer-logo img {
+    height: 25px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  footer {
+    padding: 30px 15px;
+    gap: 18px;
+  }
+
+  .footer-links {
+    gap: 18px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+
+  .footer-logo img {
+    height: 24px;
+  }
 }

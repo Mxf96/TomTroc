@@ -47,7 +47,7 @@ class BookController
         }
 
         $view = new View($book['title']);
-        $view->render('book', [
+        $view->render('bookDetails', [
             'book' => $book
         ]);
     }

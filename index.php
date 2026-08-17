@@ -29,6 +29,18 @@ try {
             $bookController = new BookController($db);
             $bookController->showBook($id);
             break;
+            
+        // Page de connexion
+        case 'login':
+            $view = new View('Connexion');
+            $view->render('login');
+            break;
+
+        // Page inscription
+        case 'register':
+            $view = new View('Inscription');
+            $view->render('register');
+            break;
 
         default:
             throw new Exception("La page demandée n'existe pas.");
