@@ -1,0 +1,123 @@
+/* ===========================
+  PAGE ERREUR
+=========================== */
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: 60px 30px;
+  background-color: #f5f3ef;
+}
+
+/* ===========================
+  CONTENU
+=========================== */
+
+.error-page__content {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+/* ===========================
+  OUPS
+=========================== */
+
+.error-page__code {
+  margin: 0 0 15px;
+  font-family: "Playfair Display", serif;
+  font-size: 55px;
+  font-weight: 400;
+  color: #00ac66;
+}
+
+/* ===========================
+  TITRE
+=========================== */
+
+.error-page__content h1 {
+  margin: 0 0 20px;
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #292929;
+}
+
+/* ===========================
+  MESSAGE
+=========================== */
+
+.error-page__message {
+  margin: 0 0 35px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777777;
+}
+
+/* ===========================
+  BOUTON
+=========================== */
+
+.error-page__button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 190px;
+  height: 48px;
+  padding: 0 25px;
+  background-color: #00ac66;
+  color: #ffffff;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.error-page__button:hover {
+  background-color: #009c5c;
+}
+
+/* ===========================
+  RESPONSIVE
+=========================== */
+
+@media screen and (max-width: 768px) {
+  .error-page {
+    min-height: calc(100vh - 130px);
+
+    padding: 50px 25px;
+  }
+
+  .error-page__code {
+    font-size: 45px;
+  }
+
+  .error-page__content h1 {
+    font-size: 26px;
+  }
+
+  .error-page__message {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .error-page {
+    padding: 40px 20px;
+  }
+
+  .error-page__code {
+    font-size: 40px;
+  }
+
+  .error-page__content h1 {
+    font-size: 23px;
+  }
+
+  .error-page__button {
+    width: 100%;
+  }
+}

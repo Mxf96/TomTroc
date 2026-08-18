@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="./assets/styles/messages.css">
     <link rel="stylesheet" href="./assets/styles/errorPage.css">
     <link rel="stylesheet" href="./assets/styles/form.css">
+    <link rel="stylesheet" href="./assets/styles/editBook.css">
 </head>
 
 <body>

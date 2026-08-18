@@ -48,6 +48,26 @@ try {
             $userController->logout();
             break;
 
+        // Mon compte
+        case 'account':
+            $userController = new UserController($db);
+            $userController->account();
+            break;
+
+        // Modification d'un livre
+        case 'editBook':
+            $id = (int) Utils::request('id');
+
+            $bookController = new BookController($db);
+            $bookController->editBook($id);
+            break;
+
+        // Suppression d'un livre
+        case 'deleteBook':
+            $bookController = new BookController($db);
+            $bookController->deleteBook();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

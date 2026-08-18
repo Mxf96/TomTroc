@@ -3,10 +3,14 @@
 class UserController
 {
     private UserManager $userManager;
+    private BookManager $bookManager;
+    private UploadService $uploadService;
 
     public function __construct(PDO $db)
     {
         $this->userManager = new UserManager($db);
+        $this->bookManager = new BookManager($db);
+        $this->uploadService = new UploadService();
     }
 
     /**
@@ -234,5 +238,226 @@ class UserController
         // Redirection vers la page d'accueil
         header('Location: index.php?action=home');
         exit;
+    }
+
+    /**
+     * Affiche et modifie le compte de l'utilisateur connecté.
+     */
+    public function account(): void
+    {
+        // L'utilisateur doit être connecté.
+        if (!isset($_SESSION['user'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+
+        $idUser = (int) $_SESSION['user']['id_user'];
+
+        // ===========================
+        // TRAITEMENT DES FORMULAIRES
+        // ===========================
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $formType = $_POST['form_type'] ?? '';
+
+            // Modification des informations personnelles.
+            if ($formType === 'information') {
+
+                $this->updateAccountInformation($idUser);
+
+                return;
+            }
+
+            // Modification de l'avatar.
+            if ($formType === 'avatar') {
+
+                $this->updateAccountAvatar($idUser);
+
+                return;
+            }
+        }
+
+        // ===========================
+        // AFFICHAGE DU COMPTE
+        // ===========================
+
+        $this->renderAccount($idUser);
+    }
+
+    /**
+     * Modifie les informations personnelles.
+     */
+    private function updateAccountInformation(int $idUser): void
+    {
+        $username = trim($_POST['username'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+
+        if (empty($username) || empty($email)) {
+
+            $this->renderAccount(
+                $idUser,
+                "Le pseudo et l'adresse email sont obligatoires."
+            );
+
+            return;
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+
+            $this->renderAccount(
+                $idUser,
+                "L'adresse email n'est pas valide."
+            );
+
+            return;
+        }
+
+        if (
+            $this->userManager->usernameExistsForOtherUser(
+                $username,
+                $idUser
+            )
+        ) {
+
+            $this->renderAccount(
+                $idUser,
+                'Ce pseudo est déjà utilisé.'
+            );
+
+            return;
+        }
+
+        if (
+            $this->userManager->emailExistsForOtherUser(
+                $email,
+                $idUser
+            )
+        ) {
+
+            $this->renderAccount(
+                $idUser,
+                'Cette adresse email est déjà utilisée.'
+            );
+
+            return;
+        }
+
+        // Si le champ mot de passe est vide,
+        // l'ancien mot de passe reste inchangé.
+        $hashedPassword = null;
+
+        if (!empty($password)) {
+
+            if (strlen($password) < 8) {
+
+                $this->renderAccount(
+                    $idUser,
+                    'Le mot de passe doit contenir au moins 8 caractères.'
+                );
+
+                return;
+            }
+
+            $hashedPassword = password_hash(
+                $password,
+                PASSWORD_DEFAULT
+            );
+        }
+
+        $this->userManager->updateUser(
+            $idUser,
+            $username,
+            $email,
+            $hashedPassword
+        );
+
+        // Mise à jour des informations conservées dans la session.
+        $_SESSION['user']['username'] = $username;
+        $_SESSION['user']['email'] = $email;
+
+        $this->renderAccount(
+            $idUser,
+            null,
+            'Vos informations ont bien été modifiées.'
+        );
+    }
+
+    /**
+     * Modifie la photo de profil.
+     */
+    private function updateAccountAvatar(int $idUser): void
+    {
+        if (!isset($_FILES['avatar'])) {
+
+            $this->renderAccount(
+                $idUser,
+                "Aucune image n'a été sélectionnée."
+            );
+
+            return;
+        }
+
+        try {
+
+            $avatar = $this->uploadService->uploadAvatar(
+                $_FILES['avatar']
+            );
+
+            $this->userManager->updateAvatar(
+                $idUser,
+                $avatar
+            );
+
+            // Mise à jour de la session.
+            $_SESSION['user']['avatar'] = $avatar;
+
+
+            $this->renderAccount(
+                $idUser,
+                null,
+                'Votre photo de profil a bien été modifiée.'
+            );
+        } catch (Exception $e) {
+
+            $this->renderAccount(
+                $idUser,
+                $e->getMessage()
+            );
+        }
+    }
+
+    /**
+     * Affiche la page du compte.
+     */
+    private function renderAccount(
+        int $idUser,
+        ?string $errorMessage = null,
+        ?string $successMessage = null
+    ): void {
+
+        $user = $this->userManager->getUserById($idUser);
+
+        if ($user === false) {
+            throw new Exception(
+                "Utilisateur introuvable."
+            );
+        }
+
+
+        $books = $this->bookManager->getBooksByUserId(
+            $idUser
+        );
+
+
+        $view = new View('Mon compte');
+
+        $view->render('account', [
+            'user' => $user,
+            'books' => $books,
+            'errorMessage' => $errorMessage,
+            'successMessage' => $successMessage
+        ]);
     }
 }
