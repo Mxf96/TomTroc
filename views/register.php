@@ -4,9 +4,15 @@
         <div class="login__form-content">
             <h1>Inscription</h1>
 
+            <?php if (!empty($errorMessage)): ?>
+                <p class="login__error">
+                    <?= htmlspecialchars($errorMessage) ?>
+                </p>
+            <?php endif; ?>
+
             <form
                 class="login__form"
-                action="index.php?action=login"
+                action="index.php?action=register"
                 method="POST">
 
                 <div class="login__field">

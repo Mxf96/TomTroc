@@ -4,6 +4,13 @@
     <div class="login__form-container">
         <div class="login__form-content">
             <h1>Connexion</h1>
+
+            <?php if (!empty($errorMessage)): ?>
+                <p class="login__error">
+                    <?= htmlspecialchars($errorMessage) ?>
+                </p>
+            <?php endif; ?>
+
             <form
                 class="login__form"
                 action="index.php?action=login"

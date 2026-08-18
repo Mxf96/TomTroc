@@ -29,17 +29,23 @@ try {
             $bookController = new BookController($db);
             $bookController->showBook($id);
             break;
-            
+
         // Page de connexion
         case 'login':
-            $view = new View('Connexion');
-            $view->render('login');
+            $userController = new UserController($db);
+            $userController->login();
             break;
 
         // Page inscription
         case 'register':
-            $view = new View('Inscription');
-            $view->render('register');
+            $userController = new UserController($db);
+            $userController->register();
+            break;
+
+        // Déconnexion
+        case 'logout':
+            $userController = new UserController($db);
+            $userController->logout();
             break;
 
         default:

@@ -11,17 +11,30 @@
     </div>
 
     <div class="header-right desktop-nav">
-        <a href="index.php?action=messages">
-            <img src="./assets/img/icons/Icon messagerie.svg" alt="">
-            <span>Messagerie</span>
-        </a>
 
-        <a href="index.php?action=account">
-            <img src="./assets/img/icons/Icon mon compte.svg" alt="">
-            <span>Mon Compte</span>
-        </a>
+        <?php if (isset($_SESSION['user'])): ?>
 
-        <a href="index.php?action=login">Connexion</a>
+            <a href="index.php?action=messages">
+                <img src="./assets/img/icons/Icon messagerie.svg" alt="">
+                <span>Messagerie</span>
+            </a>
+
+            <a href="index.php?action=account">
+                <img src="./assets/img/icons/Icon mon compte.svg" alt="">
+                <span>Mon Compte</span>
+            </a>
+
+            <a href="index.php?action=logout">
+                Déconnexion
+            </a>
+
+        <?php else: ?>
+
+            <a href="index.php?action=login">
+                Connexion
+            </a>
+
+        <?php endif; ?>
     </div>
 
     <button
@@ -41,18 +54,28 @@
             Nos livres à l'échange
         </a>
 
-        <a href="index.php?action=messages">
-            <img src="./assets/img/icons/Icon messagerie.svg" alt="">
-            <span>Messagerie</span>
-        </a>
+        <?php if (isset($_SESSION['user'])): ?>
 
-        <a href="index.php?action=account">
-            <img src="./assets/img/icons/Icon mon compte.svg" alt="">
-            <span>Mon Compte</span>
-        </a>
+            <a href="index.php?action=messages">
+                <img src="./assets/img/icons/Icon messagerie.svg" alt="">
+                <span>Messagerie</span>
+            </a>
 
-        <a href="index.php?action=login">
-            Connexion
-        </a>
+            <a href="index.php?action=account">
+                <img src="./assets/img/icons/Icon mon compte.svg" alt="">
+                <span>Mon Compte</span>
+            </a>
+
+            <a href="index.php?action=logout">
+                Déconnexion
+            </a>
+
+        <?php else: ?>
+
+            <a href="index.php?action=login">
+                Connexion
+            </a>
+
+        <?php endif; ?>
     </nav>
 </header>

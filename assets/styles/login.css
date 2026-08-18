@@ -140,6 +140,21 @@
 }
 
 /* ===========================
+  ERROR
+=========================== */
+.login__error {
+  margin: 0 0 25px;
+  padding: 12px;
+
+  background-color: #f8dddd;
+  color: #a94442;
+
+  border-radius: 4px;
+
+  font-size: 11px;
+}
+
+/* ===========================
   RESPONSIVE
 =========================== */
 
