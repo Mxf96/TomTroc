@@ -68,6 +68,14 @@ try {
             $bookController->deleteBook();
             break;
 
+        // Profil public d'un utilisateur
+        case 'profile':
+            $id = (int) Utils::request('id');
+
+            $userController = new UserController($db);
+            $userController->profile($id);
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

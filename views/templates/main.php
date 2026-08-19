@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="./assets/styles/errorPage.css">
     <link rel="stylesheet" href="./assets/styles/form.css">
     <link rel="stylesheet" href="./assets/styles/editBook.css">
+    <link rel="stylesheet" href="./assets/styles/profile.css">
 </head>
 
 <body>

@@ -460,4 +460,27 @@ class UserController
             'successMessage' => $successMessage
         ]);
     }
+
+    /**
+     * Affiche le profil public d'un utilisateur.
+     */
+    public function profile(int $idUser): void
+    {
+        // Récupération de l'utilisateur.
+        $user = $this->userManager->getUserById($idUser);
+
+        if ($user === false) {
+            throw new Exception("Cet utilisateur n'existe pas.");
+        }
+
+        // Récupération de ses livres.
+        $books = $this->bookManager->getBooksByUserId($idUser);
+
+        $view = new View('Profil de ' . $user['username']);
+
+        $view->render('profile', [
+            'user' => $user,
+            'books' => $books
+        ]);
+    }
 }

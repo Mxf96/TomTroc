@@ -57,7 +57,7 @@
                 <h2>Propriétaire</h2>
 
                 <a
-                    href="index.php?action=account&id=<?= (int) $book['id_user'] ?>"
+                    href="index.php?action=profile&id=<?= (int) $book['id_user'] ?>"
                     class="book-details__owner-card">
 
                     <?php

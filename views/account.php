@@ -96,9 +96,16 @@ $membershipDuration = $createdAt->diff($today)->y;
                 <div class="account__library">
                     <span>BIBLIOTHÈQUE</span>
 
-                    <p>
-                        <?= count($books) ?>
-                        livre<?= count($books) > 1 ? 's' : '' ?>
+                    <p class="account__library-count">
+                        <img
+                            src="./assets/img/icons/Vector.svg"
+                            alt=""
+                            class="account__library-icon">
+
+                        <span>
+                            <?= count($books) ?>
+                            livre<?= count($books) > 1 ? 's' : '' ?>
+                        </span>
                     </p>
                 </div>
             </section>

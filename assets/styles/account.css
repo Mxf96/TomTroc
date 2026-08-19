@@ -103,9 +103,24 @@
   text-transform: uppercase;
 }
 
-.account__library p {
+.account__library-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   margin: 5px 0 0;
+  font-size: 10px;
+}
+
+.account__library-count span {
   font-size: 14px;
+  font-weight: 400;
+}
+
+.account__library-icon {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
 }
 
 /* ===========================
