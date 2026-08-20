@@ -20,7 +20,7 @@ $books = $books ?? [];
                 partage de connaissances et d'histoires à
                 travers les livres.
             </p>
-            <a href="?page=books" class="home__button">
+            <a href="index.php?action=books" class="home__button">
                 Découvrir
             </a>
         </div>
@@ -61,7 +61,7 @@ $books = $books ?? [];
             <?php endforeach; ?>
         </div>
 
-        <a href="?page=books" class="home__button home__button--books">
+        <a href="index.php?action=books" class="home__button home__button--books">
             Voir tous les livres
         </a>
     </section>

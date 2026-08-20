@@ -8,6 +8,20 @@ $action = Utils::request('action', 'home');
 
 try {
 
+    // Nombre de messages non lus de l'utilisateur connecté
+    if (isset($_SESSION['user']['id_user'])) {
+
+        $unreadMessageManager = new MessageManager($db);
+
+        $_SESSION['unread_message_count'] =
+            $unreadMessageManager->getUnreadCountByUser(
+                (int) $_SESSION['user']['id_user']
+            );
+    } else {
+
+        unset($_SESSION['unread_message_count']);
+    }
+
     switch ($action) {
 
         // Page d'accueil
@@ -74,6 +88,18 @@ try {
 
             $userController = new UserController($db);
             $userController->profile($id);
+            break;
+
+        // Messagerie
+        case 'messages':
+            $messageController = new MessageController($db);
+            $messageController->showMessages();
+            break;
+
+        // Envoi d'un message
+        case 'sendMessage':
+            $messageController = new MessageController($db);
+            $messageController->sendMessage();
             break;
 
         default:

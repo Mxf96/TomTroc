@@ -14,9 +14,31 @@
 
         <?php if (isset($_SESSION['user'])): ?>
 
-            <a href="index.php?action=messages">
-                <img src="./assets/img/icons/Icon messagerie.svg" alt="">
-                <span>Messagerie</span>
+            <a
+                href="index.php?action=messages"
+                class="header__messages">
+
+                <img
+                    src="./assets/img/icons/Icon messagerie.svg"
+                    alt="">
+
+                <span class="header__messages-text">
+                    Messagerie
+                </span>
+
+                <?php
+                $unreadCount =
+                    (int) ($_SESSION['unread_message_count'] ?? 0);
+                ?>
+
+                <?php if ($unreadCount > 0): ?>
+
+                    <span class="header__messages-badge">
+                        <?= $unreadCount > 99 ? '99+' : $unreadCount ?>
+                    </span>
+
+                <?php endif; ?>
+
             </a>
 
             <a href="index.php?action=account">

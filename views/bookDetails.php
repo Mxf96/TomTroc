@@ -78,7 +78,10 @@
 
             <!-- Bouton -->
             <a
-                href="index.php?action=messages"
+                href="<?= isset($_SESSION['user'])
+                            ? 'index.php?action=messages&user_id=' . (int) $book['id_user']
+                            : 'index.php?action=login'
+                        ?>"
                 class="book-details__message">
                 Envoyer un message
             </a>

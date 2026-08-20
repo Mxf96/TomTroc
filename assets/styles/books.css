@@ -63,6 +63,13 @@
   outline: 1px solid #00ac66;
 }
 
+.books__no-result {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #a6a6a6;
+  margin-bottom: 250px;
+}
+
 /* ===========================
   LISTE DES LIVRES
 =========================== */

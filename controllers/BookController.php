@@ -27,11 +27,21 @@ class BookController
      */
     public function showBooks(): void
     {
-        $books = $this->bookManager->getAllBooks();
+        $search = trim(
+            Utils::request('search', '')
+        );
 
-        $view = new View('Livres');
+        if ($search !== '') {
+            $books = $this->bookManager->searchBooks($search);
+        } else {
+            $books = $this->bookManager->getAllBooks();
+        }
+
+        $view = new View('Nos livres');
+
         $view->render('books', [
-            'books' => $books
+            'books' => $books,
+            'search' => $search
         ]);
     }
 

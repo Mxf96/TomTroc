@@ -1,0 +1,592 @@
+/* ===========================
+   MESSAGERIE
+=========================== */
+
+.messages {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  width: 100%;
+  max-width: 1300px;
+  min-height: calc(100vh - 85px);
+  margin: 0 auto;
+  background-color: #f5f3ef;
+}
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.messages__sidebar {
+  background-color: #ffffff;
+}
+
+.messages__sidebar h1 {
+  margin: 0;
+  padding: 60px 35px 35px;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+}
+
+.messages__no-conversation {
+  margin-left: 15px;
+}
+
+/* ===========================
+   LISTE DES CONVERSATIONS
+=========================== */
+
+.messages__conversations {
+  display: flex;
+  flex-direction: column;
+}
+
+.messages__conversation {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 75px;
+  padding: 12px 35px;
+  color: #292929;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.messages__conversation:hover {
+  background-color: #faf9f7;
+}
+
+.messages__conversation img {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.messages__conversation-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.messages__conversation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.messages__conversation-name {
+  font-size: 12px;
+  color: #292929;
+}
+
+.messages__conversation-date {
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #292929;
+}
+
+.messages__conversation-content p {
+  margin: 5px 0 0;
+  overflow: hidden;
+  font-size: 10px;
+  color: #a6a6a6;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ===========================
+   CHAT
+=========================== */
+
+.messages__chat {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 45px 45px 30px;
+}
+
+/* ===========================
+   HEADER CONVERSATION
+=========================== */
+
+.messages__chat-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 0;
+  background: transparent;
+}
+
+.messages__chat-header img {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.messages__chat-header span {
+  display: inline-block;
+  width: auto;
+  font-size: 13px;
+  font-weight: 500;
+  color: #292929;
+}
+
+/* ===========================
+   RETOUR MOBILE
+=========================== */
+
+.messages__back {
+  display: none;
+  color: #a6a6a6;
+  text-decoration: none;
+}
+
+/* ===========================
+   CONTENU DES MESSAGES
+=========================== */
+
+.messages__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 22px;
+  padding: 40px 0 35px;
+  overflow-y: auto;
+}
+
+/* ===========================
+   MESSAGE
+=========================== */
+
+.message {
+  display: flex;
+  flex-direction: column;
+
+  width: 60%;
+}
+
+.message--mine {
+  align-self: flex-end;
+}
+
+.message--other {
+  align-self: flex-start;
+}
+
+/* ===========================
+   META MESSAGE
+=========================== */
+
+.message__meta {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  font-size: 9px;
+  color: #a6a6a6;
+}
+
+.message--mine .message__meta {
+  justify-content: flex-end;
+}
+
+.message__meta img {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===========================
+   BULLE MESSAGE
+=========================== */
+
+.message__bubble {
+  padding: 12px 15px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #292929;
+}
+
+.message--mine .message__bubble {
+  background-color: #edf2f5;
+}
+
+/* ===========================
+   FORMULAIRE D'ENVOI
+=========================== */
+
+.messages__form {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  gap: 18px;
+}
+
+.messages__form input {
+  width: 100%;
+  height: 48px;
+
+  padding: 0 20px;
+
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  color: #292929;
+}
+
+.messages__form input::placeholder {
+  color: #a6a6a6;
+}
+
+.messages__form input:focus {
+  outline: 1px solid #00ac66;
+}
+
+.messages__form button {
+  height: 48px;
+  background-color: #00ac66;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.messages__form button:hover {
+  background-color: #009c5c;
+}
+
+/* ===========================
+   AUCUNE CONVERSATION
+=========================== */
+
+.messages__empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #a6a6a6;
+  font-size: 12px;
+}
+
+/* ===========================
+   CONVERSATION NON LUE
+=========================== */
+
+.messages__conversation--unread {
+  background-color: #edf2f5;
+}
+
+.messages__conversation--unread:hover {
+  background-color: #e5ecef;
+}
+
+.messages__conversation--unread .messages__conversation-name {
+  font-weight: 600;
+  color: #292929;
+}
+
+.messages__conversation--unread .messages__conversation-date {
+  font-weight: 600;
+  color: #292929;
+}
+
+.messages__conversation--unread .messages__conversation-content p {
+  font-weight: 500;
+  color: #555555;
+}
+
+/* Nombre de messages non lus */
+
+.messages__conversation-unread {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  background-color: #292929;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media screen and (max-width: 768px) {
+  /* ===========================
+     CONTENEUR
+  =========================== */
+
+  .messages {
+    display: block;
+
+    width: 100%;
+    max-width: none;
+    min-height: calc(100vh - 70px);
+    margin: 0;
+  }
+
+  /* ===========================
+     SIDEBAR
+  =========================== */
+
+  .messages__sidebar {
+    display: block;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+  }
+
+  .messages__sidebar h1 {
+    padding: 35px 20px 25px;
+    font-size: 24px;
+  }
+
+  /* ===========================
+     CONVERSATIONS MOBILE
+  =========================== */
+
+  .messages__conversation {
+    min-height: 75px;
+
+    padding: 14px 20px;
+  }
+
+  .messages__conversation img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .messages__conversation-name {
+    font-size: 12px;
+  }
+
+  .messages__conversation-date {
+    font-size: 9px;
+  }
+
+  .messages__conversation-content p {
+    font-size: 9px;
+  }
+
+  /* ===========================
+     CHAT MASQUÉ PAR DÉFAUT
+  =========================== */
+
+  .messages__chat {
+    display: none;
+    width: 100%;
+    min-height: calc(100vh - 70px);
+    padding: 25px 20px;
+    background-color: #f5f3ef;
+  }
+
+  /* ===========================
+     CONVERSATION OUVERTE
+  =========================== */
+
+  .messages--conversation-open .messages__sidebar {
+    display: none;
+  }
+
+  .messages--conversation-open .messages__chat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===========================
+     HEADER CHAT MOBILE
+  =========================== */
+
+  .messages__chat-header {
+    position: relative;
+
+    padding-top: 30px;
+  }
+
+  .messages__chat-header img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .messages__chat-header span {
+    font-size: 12px;
+  }
+
+  /* ===========================
+     BOUTON RETOUR
+  =========================== */
+
+  .messages__back {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    display: inline-block;
+    font-size: 10px;
+    color: #a6a6a6;
+  }
+
+  .messages__back:hover {
+    color: #292929;
+  }
+
+  /* ===========================
+     MESSAGES
+  =========================== */
+
+  .messages__content {
+    flex: 1;
+    gap: 20px;
+    padding: 35px 0 30px;
+  }
+
+  .message {
+    width: 85%;
+  }
+
+  .message__bubble {
+    font-size: 10px;
+  }
+
+  /* ===========================
+     FORMULAIRE MOBILE
+  =========================== */
+
+  .messages__form {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+  .messages__form input {
+    height: 48px;
+  }
+
+  .messages__form button {
+    width: 100%;
+    height: 48px;
+  }
+}
+
+/* ===========================
+   PETITS MOBILES
+=========================== */
+
+@media screen and (max-width: 425px) {
+  /* ===========================
+     SIDEBAR
+  =========================== */
+
+  .messages__sidebar h1 {
+    padding: 30px 15px 20px;
+    font-size: 22px;
+  }
+
+  .messages__conversation {
+    gap: 12px;
+    padding: 14px 15px;
+  }
+
+  .messages__conversation img {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* ===========================
+     CHAT
+  =========================== */
+
+  .messages__chat {
+    padding: 20px 15px;
+  }
+
+  .messages__chat-header {
+    padding-top: 28px;
+  }
+
+  .messages__chat-header img {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* ===========================
+     MESSAGES
+  =========================== */
+
+  .message {
+    width: 90%;
+  }
+
+  .message__bubble {
+    padding: 11px 13px;
+    font-size: 9px;
+  }
+
+  .message__meta {
+    font-size: 8px;
+  }
+
+  .message__meta img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ===========================
+     FORMULAIRE
+  =========================== */
+
+  .messages__form input {
+    padding: 0 15px;
+    font-size: 10px;
+  }
+
+  .messages__form button {
+    font-size: 11px;
+  }
+}
+
+/* ===========================
+   TRÈS PETITS MOBILES
+=========================== */
+
+@media screen and (max-width: 320px) {
+  .messages__sidebar h1 {
+    padding-right: 12px;
+    padding-left: 12px;
+    font-size: 20px;
+  }
+
+  .messages__conversation {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .messages__chat {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .message {
+    width: 95%;
+  }
+}

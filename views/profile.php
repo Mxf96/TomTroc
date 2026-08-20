@@ -23,7 +23,6 @@ $membershipDuration = $createdAt->diff($today)->y;
         =========================== -->
 
         <section class="profile__user">
-
             <div class="profile__avatar">
                 <img
                     src="<?= htmlspecialchars($avatar) ?>"
@@ -60,11 +59,13 @@ $membershipDuration = $createdAt->diff($today)->y;
             </div>
 
             <a
-                href="index.php?action=messages&id=<?= (int) $user['id_user'] ?>"
+                href="<?= isset($_SESSION['user'])
+                            ? 'index.php?action=messages&user_id=' . (int) $user['id_user']
+                            : 'index.php?action=login'
+                        ?>"
                 class="profile__message">
                 Écrire un message
             </a>
-
         </section>
 
         <!-- ===========================

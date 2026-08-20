@@ -133,6 +133,44 @@ class BookManager
     }
 
     /**
+     * Recherche des livres par titre ou auteur.
+     */
+    public function searchBooks(string $search): array
+    {
+        $sql = "
+        SELECT
+            b.id_book,
+            b.title,
+            b.author,
+            b.image,
+            b.description,
+            b.status,
+            b.created_at,
+            b.updated_at,
+            b.id_user,
+            u.username
+        FROM Books b
+        INNER JOIN Users u
+            ON b.id_user = u.id_user
+        WHERE b.title LIKE :search
+           OR b.author LIKE :search
+        ORDER BY b.created_at DESC
+    ";
+
+        $statement = $this->db->prepare($sql);
+
+        $statement->bindValue(
+            ':search',
+            '%' . $search . '%',
+            PDO::PARAM_STR
+        );
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
      * Récupère tous les livres appartenant à un utilisateur.
      */
     public function getBooksByUserId(int $idUser): array
