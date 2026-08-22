@@ -90,16 +90,16 @@
   background-color: #00ac66;
   color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .login__button:hover {
-  background-color: #009c5c;
+  background-color: #006d41;
 }
 
 /* ===========================
@@ -145,12 +145,9 @@
 .login__error {
   margin: 0 0 25px;
   padding: 12px;
-
   background-color: #f8dddd;
   color: #a94442;
-
   border-radius: 4px;
-
   font-size: 11px;
 }
 

@@ -259,7 +259,7 @@
   background-color: #00ac66;
   color: #ffffff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: inherit;
   font-size: 12px;
   font-weight: 600;
@@ -268,7 +268,7 @@
 }
 
 .messages__form button:hover {
-  background-color: #009c5c;
+  background-color: #006d41;
 }
 
 /* ===========================

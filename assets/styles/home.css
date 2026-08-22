@@ -51,17 +51,15 @@
   padding: 0 22px;
   background-color: #00ac66;
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 12px;
   font-weight: 600;
   text-decoration: none;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
 .home__button:hover {
-  background-color: #009c5c;
+  background-color: #006d41;
 }
 
 .home__hero-image {
@@ -236,7 +234,7 @@
 }
 
 .home__button--outline:hover {
-  background-color: #00ac66;
+  background-color: #006d41;
   color: #ffffff;
 }
 
