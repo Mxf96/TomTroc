@@ -61,7 +61,7 @@ class BookManager
             u.username
         FROM Books b
         INNER JOIN Users u ON b.id_user = u.id_user
-        ORDER BY b.created_at DESC
+        ORDER BY b.created_at ASC
     ";
 
         $statement = $this->db->prepare($sql);
@@ -202,6 +202,82 @@ class BookManager
         $statement->execute();
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Ajoute un nouveau livre.
+     */
+    public function createBook(
+        string $title,
+        string $author,
+        string $image,
+        string $description,
+        string $status,
+        int $idUser
+    ): bool {
+
+        $sql = "
+        INSERT INTO Books (
+            title,
+            author,
+            image,
+            description,
+            status,
+            created_at,
+            updated_at,
+            id_user
+        )
+        VALUES (
+            :title,
+            :author,
+            :image,
+            :description,
+            :status,
+            NOW(),
+            NOW(),
+            :id_user
+        )
+    ";
+
+        $statement = $this->db->prepare($sql);
+
+        $statement->bindValue(
+            ':title',
+            $title,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':author',
+            $author,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':image',
+            $image,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':description',
+            $description,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':status',
+            $status,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':id_user',
+            $idUser,
+            PDO::PARAM_INT
+        );
+
+        return $statement->execute();
     }
 
     /**

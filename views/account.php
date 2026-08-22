@@ -116,7 +116,8 @@ $membershipDuration = $createdAt->diff($today)->y;
 
                 <form
                     action="index.php?action=account"
-                    method="POST">
+                    method="POST"
+                    novalidate>
 
                     <input
                         type="hidden"
@@ -132,8 +133,7 @@ $membershipDuration = $createdAt->diff($today)->y;
                             type="email"
                             id="email"
                             name="email"
-                            value="<?= htmlspecialchars($user['email']) ?>"
-                            required>
+                            value="<?= htmlspecialchars($user['email']) ?>">
                     </div>
 
                     <div class="account__field">
@@ -158,8 +158,7 @@ $membershipDuration = $createdAt->diff($today)->y;
                             type="text"
                             id="username"
                             name="username"
-                            value="<?= htmlspecialchars($user['username']) ?>"
-                            required>
+                            value="<?= htmlspecialchars($user['username']) ?>">
                     </div>
 
                     <button
@@ -174,6 +173,14 @@ $membershipDuration = $createdAt->diff($today)->y;
         <!-- ===========================
             LIVRES DE L'UTILISATEUR
         =========================== -->
+
+        <div class="account__books-actions">
+            <a
+                href="index.php?action=addBook"
+                class="account__add-book">
+                Ajouter un livre
+            </a>
+        </div>
 
         <section class="account__books">
 

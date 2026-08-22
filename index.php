@@ -68,6 +68,12 @@ try {
             $userController->account();
             break;
 
+        // Ajout d'un livre
+        case 'addBook':
+            $bookController = new BookController($db);
+            $bookController->addBook();
+            break;
+
         // Modification d'un livre
         case 'editBook':
             $id = (int) Utils::request('id');

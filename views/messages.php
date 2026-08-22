@@ -72,13 +72,10 @@ $currentConversation = $currentConversation ?? null;
                                     ?? 'Aucun message'
                             ) ?>
                         </p>
-
                     </div>
-
                 </a>
 
             <?php endforeach; ?>
-
 
             <?php if (empty($conversations)): ?>
 
@@ -89,7 +86,6 @@ $currentConversation = $currentConversation ?? null;
             <?php endif; ?>
 
         </div>
-
     </aside>
 
 
@@ -164,7 +160,6 @@ $currentConversation = $currentConversation ?? null;
                                     )
                                 ) ?>
                             </span>
-
                         </div>
 
                         <div class="message__bubble">
@@ -174,7 +169,6 @@ $currentConversation = $currentConversation ?? null;
                                 )
                             ) ?>
                         </div>
-
                     </div>
 
                 <?php endforeach; ?>
@@ -194,23 +188,30 @@ $currentConversation = $currentConversation ?? null;
                  ENVOI
             =========================== -->
 
+            <?php if (!empty($errorMessage)): ?>
+
+                <p class="messages__error">
+                    <?= htmlspecialchars($errorMessage) ?>
+                </p>
+
+            <?php endif; ?>
+
             <form
                 class="messages__form"
                 action="index.php?action=sendMessage"
-                method="POST">
+                method="POST"
+                novalidate>
 
                 <input
                     type="hidden"
                     name="conversation_id"
                     value="<?= (int) $currentConversation['id_conversation'] ?>">
 
-
                 <input
                     type="text"
                     name="content"
                     placeholder="Tapez votre message ici"
-                    autocomplete="off"
-                    required>
+                    autocomplete="off">
 
                 <button type="submit">
                     Envoyer

@@ -155,6 +155,15 @@ class MessageController
         }
 
         // ===========================
+        // MESSAGE D'ERREUR
+        // ===========================
+
+        $errorMessage =
+            $_SESSION['message_error'] ?? null;
+
+        unset($_SESSION['message_error']);
+
+        // ===========================
         // AFFICHAGE
         // ===========================
 
@@ -163,7 +172,8 @@ class MessageController
         $view->render('messages', [
             'conversations' => $conversations,
             'currentConversation' => $currentConversation,
-            'messages' => $messages
+            'messages' => $messages,
+            'errorMessage' => $errorMessage
         ]);
     }
 
@@ -210,6 +220,9 @@ class MessageController
         }
 
         if ($content === '') {
+
+            $_SESSION['message_error'] =
+                'Veuillez écrire un message avant de l\'envoyer.';
 
             header(
                 'Location: index.php?action=messages'

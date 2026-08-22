@@ -192,6 +192,35 @@
 }
 
 /* ===========================
+   AJOUTER UN LIVRE
+=========================== */
+
+.account__books-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.account__add-book {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 0 15px;
+  background-color: #00ac66;
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.account__add-book:hover {
+  background-color: #006d41;
+}
+
+/* ===========================
   TABLEAU LIVRES
 =========================== */
 
@@ -453,6 +482,14 @@
     height: 45px;
     align-self: stretch;
     margin-top: 5px;
+  }
+
+  .account__books-actions {
+    justify-content: center;
+  }
+
+  .account__add-book {
+    width: 60%;
   }
 
   .account__books {

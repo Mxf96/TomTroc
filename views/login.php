@@ -14,28 +14,34 @@
             <form
                 class="login__form"
                 action="index.php?action=login"
-                method="POST">
+                method="POST"
+                novalidate>
 
                 <div class="login__field">
-                    <label for="email">Adresse email</label>
+                    <label for="email">
+                        Adresse email
+                    </label>
 
                     <input
                         type="email"
                         id="email"
                         name="email"
-                        autocomplete="email"
-                        required>
+                        value="<?= htmlspecialchars($email ?? '') ?>"
+                        autocomplete="email">
+
                 </div>
 
                 <div class="login__field">
-                    <label for="password">Mot de passe</label>
+                    <label for="password">
+                        Mot de passe
+                    </label>
 
                     <input
                         type="password"
                         id="password"
                         name="password"
-                        autocomplete="current-password"
-                        required>
+                        autocomplete="current-password">
+
                 </div>
 
                 <button

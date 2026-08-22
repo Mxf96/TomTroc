@@ -3,10 +3,12 @@
 class BookController
 {
     private BookManager $bookManager;
+    private UploadService $uploadService;
 
     public function __construct(PDO $db)
     {
         $this->bookManager = new BookManager($db);
+        $this->uploadService = new UploadService();
     }
 
     /**
@@ -61,12 +63,16 @@ class BookController
             'book' => $book
         ]);
     }
+
     /**
-     * Affiche et traite le formulaire de modification d'un livre.
+     * Affiche et traite le formulaire d'ajout d'un livre.
      */
-    public function editBook(int $id): void
+    public function addBook(): void
     {
-        // L'utilisateur doit être connecté.
+        // ===========================
+        // UTILISATEUR CONNECTÉ
+        // ===========================
+
         if (!isset($_SESSION['user'])) {
             header('Location: index.php?action=login');
             exit;
@@ -74,19 +80,191 @@ class BookController
 
         $idUser = (int) $_SESSION['user']['id_user'];
 
+        // ===========================
+        // AFFICHAGE DU FORMULAIRE
+        // ===========================
+
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+
+            $view = new View('Ajouter un livre');
+            $view->render('addBook');
+
+            return;
+        }
+
+        // ===========================
+        // RÉCUPÉRATION DES DONNÉES
+        // ===========================
+
+        $title = trim($_POST['title'] ?? '');
+        $author = trim($_POST['author'] ?? '');
+        $description = trim($_POST['description'] ?? '');
+        $status = $_POST['status'] ?? 'available';
+
+        // ===========================
+        // VALIDATION
+        // ===========================
+
+        // Titre
+        if ($title === '') {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => 'Veuillez renseigner le titre du livre.'
+            ]);
+
+            return;
+        }
+
+
+        // Auteur
+        if ($author === '') {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => "Veuillez renseigner l'auteur du livre."
+            ]);
+
+            return;
+        }
+
+
+        // Description
+        if ($description === '') {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => 'Veuillez renseigner une description du livre.'
+            ]);
+
+            return;
+        }
+
+
+        // Statut
+        $allowedStatuses = [
+            'available',
+            'unavailable'
+        ];
+
+        if (!in_array($status, $allowedStatuses, true)) {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => 'La disponibilité sélectionnée est invalide.'
+            ]);
+
+            return;
+        }
+
+
+        // Image
+        if (
+            !isset($_FILES['image'])
+            || $_FILES['image']['error'] === UPLOAD_ERR_NO_FILE
+        ) {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => 'Veuillez sélectionner une photo du livre.'
+            ]);
+
+            return;
+        }
+
+
+        // Autre erreur pendant l'upload
+        if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => "Une erreur est survenue lors de l'envoi de l'image."
+            ]);
+
+            return;
+        }
+
+        try {
+
+            $image = $this->uploadService->uploadBookImage(
+                $_FILES['image']
+            );
+        } catch (Exception $e) {
+
+            $view = new View('Ajouter un livre');
+
+            $view->render('addBook', [
+                'errorMessage' => $e->getMessage()
+            ]);
+
+            return;
+        }
+
+        // ===========================
+        // AJOUT EN BASE DE DONNÉES
+        // ===========================
+
+        $this->bookManager->createBook(
+            $title,
+            $author,
+            $image,
+            $description,
+            $status,
+            $idUser
+        );
+
+        // ===========================
+        // REDIRECTION
+        // ===========================
+
+        header('Location: index.php?action=account');
+        exit;
+    }
+
+    /**
+     * Affiche et traite le formulaire de modification d'un livre.
+     */
+    public function editBook(int $id): void
+    {
+        // ===========================
+        // UTILISATEUR CONNECTÉ
+        // ===========================
+
+        if (!isset($_SESSION['user'])) {
+            header('Location: index.php?action=login');
+            exit;
+        }
+
+        $idUser = (int) $_SESSION['user']['id_user'];
+
+
+        // ===========================
+        // RÉCUPÉRATION DU LIVRE
+        // ===========================
+
         $book = $this->bookManager->getBookById($id);
 
         if ($book === false) {
-            throw new Exception("Le livre demandé n'existe pas.");
+            throw new Exception(
+                "Le livre demandé n'existe pas."
+            );
         }
 
-        // Vérifie que le livre appartient à l'utilisateur connecté.
+
+        // Vérifie que le livre appartient
+        // à l'utilisateur connecté.
         if ((int) $book['id_user'] !== $idUser) {
+
             throw new Exception(
                 "Vous n'êtes pas autorisé à modifier ce livre."
             );
         }
-
 
         // ===========================
         // AFFICHAGE DU FORMULAIRE
@@ -103,9 +281,8 @@ class BookController
             return;
         }
 
-
         // ===========================
-        // RÉCUPÉRATION
+        // RÉCUPÉRATION DES DONNÉES
         // ===========================
 
         $title = trim($_POST['title'] ?? '');
@@ -113,25 +290,57 @@ class BookController
         $description = trim($_POST['description'] ?? '');
         $status = $_POST['status'] ?? 'available';
 
-
         // ===========================
-        // VALIDATION
+        // VALIDATION DU TITRE
         // ===========================
 
-        if (
-            empty($title)
-            || empty($author)
-            || empty($description)
-        ) {
+        if ($title === '') {
+
             $view = new View('Modifier un livre');
 
             $view->render('editBook', [
                 'book' => $book,
-                'errorMessage' => 'Tous les champs sont obligatoires.'
+                'errorMessage' => 'Veuillez renseigner le titre du livre.'
             ]);
 
             return;
         }
+
+        // ===========================
+        // VALIDATION DE L'AUTEUR
+        // ===========================
+
+        if ($author === '') {
+
+            $view = new View('Modifier un livre');
+
+            $view->render('editBook', [
+                'book' => $book,
+                'errorMessage' => "Veuillez renseigner l'auteur du livre."
+            ]);
+
+            return;
+        }
+
+        // ===========================
+        // VALIDATION DESCRIPTION
+        // ===========================
+
+        if ($description === '') {
+
+            $view = new View('Modifier un livre');
+
+            $view->render('editBook', [
+                'book' => $book,
+                'errorMessage' => 'Veuillez renseigner une description du livre.'
+            ]);
+
+            return;
+        }
+
+        // ===========================
+        // VALIDATION STATUT
+        // ===========================
 
         $allowedStatuses = [
             'available',
@@ -139,7 +348,15 @@ class BookController
         ];
 
         if (!in_array($status, $allowedStatuses, true)) {
-            throw new Exception("Statut du livre invalide.");
+
+            $view = new View('Modifier un livre');
+
+            $view->render('editBook', [
+                'book' => $book,
+                'errorMessage' => 'La disponibilité sélectionnée est invalide.'
+            ]);
+
+            return;
         }
 
         // ===========================
@@ -154,6 +371,10 @@ class BookController
             $description,
             $status
         );
+
+        // ===========================
+        // REDIRECTION
+        // ===========================
 
         header('Location: index.php?action=account');
         exit;

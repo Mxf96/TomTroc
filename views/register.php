@@ -13,7 +13,8 @@
             <form
                 class="login__form"
                 action="index.php?action=register"
-                method="POST">
+                method="POST"
+                novalidate>
 
                 <div class="login__field">
                     <label for="username">Pseudo</label>
@@ -22,6 +23,7 @@
                         type="text"
                         id="username"
                         name="username"
+                        value="<?= htmlspecialchars($username ?? '') ?>"
                         autocomplete="username">
                 </div>
 
@@ -32,6 +34,7 @@
                         type="email"
                         id="email"
                         name="email"
+                        value="<?= htmlspecialchars($email ?? '') ?>"
                         autocomplete="email">
                 </div>
 

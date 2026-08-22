@@ -1,0 +1,353 @@
+/* ===========================
+   AJOUT D'UN LIVRE
+=========================== */
+
+.add-book {
+  min-height: 100vh;
+  padding: 50px 30px 100px;
+  background-color: #f5f3ef;
+}
+
+/* ===========================
+   CONTENEUR
+=========================== */
+
+.add-book__container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   RETOUR
+=========================== */
+
+.add-book__back {
+  display: inline-block;
+  margin-bottom: 25px;
+  color: #a6a6a6;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.add-book__back:hover {
+  color: #292929;
+}
+
+/* ===========================
+   TITRE
+=========================== */
+
+.add-book__container > h1 {
+  margin: 0 0 30px;
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #292929;
+}
+
+/* ===========================
+   ERREUR
+=========================== */
+
+.add-book__error {
+  margin: 0 0 25px;
+  padding: 12px 15px;
+  background-color: #fce8e8;
+  color: #b3261e;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+/* ===========================
+   FORMULAIRE
+=========================== */
+
+.add-book__form {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 100px;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 15px;
+}
+
+/* ===========================
+   PHOTO
+=========================== */
+
+.add-book__photo {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-book__photo > label {
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #a6a6a6;
+}
+
+/* ===========================
+   IMAGE
+=========================== */
+
+.add-book__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background-color: #edf2f5;
+}
+
+.add-book__image-preview {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.add-book__image-preview[hidden] {
+  display: none;
+}
+
+.add-book__image-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #a6a6a6;
+  font-size: 12px;
+}
+
+/* ===========================
+   AJOUT PHOTO
+=========================== */
+
+.add-book__photo-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.add-book__image-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.add-book__image-label {
+  color: #292929;
+  font-size: 11px;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.add-book__image-label:hover {
+  color: #00ac66;
+}
+
+/* ===========================
+   CHAMPS
+=========================== */
+
+.add-book__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.add-book__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-book__field label {
+  font-size: 12px;
+
+  color: #a6a6a6;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.add-book__field input,
+.add-book__field textarea,
+.add-book__field select {
+  width: 100%;
+  padding: 15px;
+  background-color: #edf2f5;
+  color: #292929;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.add-book__field input {
+  height: 50px;
+}
+
+.add-book__field textarea {
+  min-height: 365px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.add-book__field select {
+  height: 50px;
+  cursor: pointer;
+}
+
+/* ===========================
+   PLACEHOLDERS
+=========================== */
+
+.add-book__field input::placeholder,
+.add-book__field textarea::placeholder {
+  color: #a6a6a6;
+}
+
+/* ===========================
+   FOCUS
+=========================== */
+
+.add-book__field input:focus,
+.add-book__field textarea:focus,
+.add-book__field select:focus {
+  outline: none;
+  border-color: #00ac66;
+}
+
+/* ===========================
+   BOUTON
+=========================== */
+
+.add-book__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 335px;
+  height: 55px;
+  margin-top: 10px;
+  background-color: #00ac66;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-book__button:hover {
+  background-color: #006d41;
+}
+
+/* ===========================
+   RESPONSIVE TABLETTE
+=========================== */
+
+@media screen and (max-width: 768px) {
+  .add-book {
+    padding: 40px 20px 70px;
+  }
+
+  .add-book__container {
+    max-width: 600px;
+  }
+
+  .add-book__container > h1 {
+    font-size: 24px;
+  }
+
+  .add-book__form {
+    grid-template-columns: 1fr;
+    gap: 45px;
+    padding: 35px;
+  }
+
+  .add-book__photo {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .add-book__field textarea {
+    min-height: 250px;
+  }
+
+  .add-book__button {
+    max-width: none;
+  }
+}
+
+/* ===========================
+   RESPONSIVE MOBILE
+=========================== */
+
+@media screen and (max-width: 425px) {
+  .add-book {
+    padding: 30px 15px 50px;
+  }
+
+  .add-book__back {
+    margin-bottom: 20px;
+  }
+
+  .add-book__container > h1 {
+    margin-bottom: 25px;
+    font-size: 22px;
+  }
+
+  .add-book__form {
+    gap: 35px;
+    padding: 25px 20px;
+  }
+
+  .add-book__fields {
+    gap: 20px;
+  }
+
+  .add-book__field input,
+  .add-book__field select {
+    height: 48px;
+  }
+
+  .add-book__field textarea {
+    min-height: 220px;
+  }
+
+  .add-book__button {
+    height: 50px;
+  }
+}
+
+/* ===========================
+   TRÈS PETITS MOBILES
+=========================== */
+
+@media screen and (max-width: 320px) {
+  .add-book {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .add-book__form {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .add-book__container > h1 {
+    font-size: 20px;
+  }
+}

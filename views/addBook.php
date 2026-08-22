@@ -1,70 +1,101 @@
 <?php
 
 /**
- * @var array $book
+ * Page d'ajout d'un livre.
  */
 
 ?>
 
-<section class="edit-book">
-    <div class="edit-book__container">
+<section class="add-book">
+    <div class="add-book__container">
+
+        <!-- Retour -->
         <a
             href="index.php?action=account"
-            class="edit-book__back">
+            class="add-book__back">
             ← retour
         </a>
 
-        <h1>Modifier les informations</h1>
+        <h1>
+            Ajouter un livre
+        </h1>
 
+        <!-- Message d'erreur -->
         <?php if (!empty($errorMessage)): ?>
-            <p class="edit-book__error">
+
+            <p class="add-book__error">
                 <?= htmlspecialchars($errorMessage) ?>
             </p>
+
         <?php endif; ?>
 
+        <!-- ===========================
+             FORMULAIRE
+        =========================== -->
+
         <form
-            action="index.php?action=editBook&id=<?= (int) $book['id_book'] ?>"
+            action="index.php?action=addBook"
             method="POST"
             enctype="multipart/form-data"
-            class="edit-book__form"
+            class="add-book__form"
             novalidate>
 
             <!-- ===========================
-                PHOTO
+                 PHOTO
             =========================== -->
 
-            <div class="edit-book__photo">
-                <label>Photo</label>
+            <div class="add-book__photo">
 
-                <div class="edit-book__image">
+                <label>
+                    Photo
+                </label>
+
+                <div class="add-book__image">
+
+                    <div
+                        class="add-book__image-placeholder"
+                        id="add-book-image-placeholder">
+
+                        <span>
+                            Aucune photo
+                        </span>
+
+                    </div>
+
                     <img
-                        src="<?= htmlspecialchars($book['image']) ?>"
-                        alt="<?= htmlspecialchars($book['title']) ?>">
+                        src=""
+                        alt="Aperçu du livre"
+                        id="add-book-image-preview"
+                        class="add-book__image-preview"
+                        hidden>
                 </div>
 
-                <div class="edit-book__photo-action">
+                <div class="add-book__photo-action">
 
                     <input
                         type="file"
                         id="image"
                         name="image"
-                        class="edit-book__image-input"
+                        class="add-book__image-input"
                         accept=".png,.jpg,.jpeg,.webp,.avif">
 
                     <label
                         for="image"
-                        class="edit-book__image-label">
-                        Modifier la photo
+                        class="add-book__image-label">
+                        Ajouter une photo
                     </label>
                 </div>
             </div>
 
             <!-- ===========================
-                INFORMATIONS
+                 INFORMATIONS
             =========================== -->
 
-            <div class="edit-book__fields">
-                <div class="edit-book__field">
+            <div class="add-book__fields">
+
+                <!-- Titre -->
+                <div class="add-book__field">
+
                     <label for="title">
                         Titre
                     </label>
@@ -73,10 +104,13 @@
                         type="text"
                         id="title"
                         name="title"
-                        value="<?= htmlspecialchars($book['title']) ?>">
+                        placeholder="Titre du livre">
+
                 </div>
 
-                <div class="edit-book__field">
+                <!-- Auteur -->
+                <div class="add-book__field">
+
                     <label for="author">
                         Auteur
                     </label>
@@ -85,20 +119,27 @@
                         type="text"
                         id="author"
                         name="author"
-                        value="<?= htmlspecialchars($book['author']) ?>">
+                        placeholder="Auteur du livre">
+
                 </div>
 
-                <div class="edit-book__field">
+                <!-- Description -->
+                <div class="add-book__field">
+
                     <label for="description">
                         Commentaire
                     </label>
 
                     <textarea
                         id="description"
-                        name="description"><?= htmlspecialchars($book['description']) ?></textarea>
+                        name="description"
+                        placeholder="Décrivez votre livre"></textarea>
+
                 </div>
 
-                <div class="edit-book__field">
+                <!-- Disponibilité -->
+                <div class="add-book__field">
+
                     <label for="status">
                         Disponibilité
                     </label>
@@ -109,23 +150,21 @@
 
                         <option
                             value="available"
-                            <?= $book['status'] === 'available' ? 'selected' : '' ?>>
+                            selected>
                             disponible
                         </option>
 
-                        <option
-                            value="unavailable"
-                            <?= $book['status'] === 'unavailable' ? 'selected' : '' ?>>
+                        <option value="unavailable">
                             non disponible
                         </option>
-
                     </select>
                 </div>
 
+                <!-- Bouton -->
                 <button
                     type="submit"
-                    class="edit-book__button">
-                    Valider
+                    class="add-book__button">
+                    Ajouter
                 </button>
             </div>
         </form>

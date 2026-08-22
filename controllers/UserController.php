@@ -18,8 +18,10 @@ class UserController
      */
     public function register(): void
     {
-        // Si le formulaire n'a pas encore été envoyé,
-        // on affiche simplement la page.
+        // ===========================
+        // AFFICHAGE DU FORMULAIRE
+        // ===========================
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
             $view = new View('Inscription');
@@ -29,7 +31,7 @@ class UserController
         }
 
         // ===========================
-        // Récupération des données
+        // RÉCUPÉRATION DES DONNÉES
         // ===========================
 
         $username = trim($_POST['username'] ?? '');
@@ -37,67 +39,104 @@ class UserController
         $password = $_POST['password'] ?? '';
 
         // ===========================
-        // Validation
+        // VALIDATION PSEUDO
         // ===========================
 
-        if (
-            empty($username)
-            || empty($email)
-            || empty($password)
-        ) {
+        if ($username === '') {
+
             $this->showRegisterError(
-                'Tous les champs sont obligatoires.'
+                'Le pseudo est obligatoire.',
+                $username,
+                $email
             );
 
             return;
         }
 
-        // Vérification de l'adresse email
+        // ===========================
+        // VALIDATION EMAIL
+        // ===========================
+
+        if ($email === '') {
+
+            $this->showRegisterError(
+                "L'adresse email est obligatoire.",
+                $username,
+                $email
+            );
+
+            return;
+        }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             $this->showRegisterError(
-                "L'adresse email n'est pas valide."
-            );
-
-            return;
-        }
-
-        // Vérification du mot de passe
-
-        if (strlen($password) < 8) {
-
-            $this->showRegisterError(
-                'Le mot de passe doit contenir au moins 8 caractères.'
-            );
-
-            return;
-        }
-
-        // Vérification du pseudo
-
-        if ($this->userManager->usernameExists($username)) {
-
-            $this->showRegisterError(
-                'Ce pseudo est déjà utilisé.'
-            );
-
-            return;
-        }
-
-        // Vérification de l'email
-
-        if ($this->userManager->emailExists($email)) {
-
-            $this->showRegisterError(
-                'Cette adresse email est déjà utilisée.'
+                "L'adresse email n'est pas valide.",
+                $username,
+                $email
             );
 
             return;
         }
 
         // ===========================
-        // Hash du mot de passe
+        // VALIDATION MOT DE PASSE
+        // ===========================
+
+        if ($password === '') {
+
+            $this->showRegisterError(
+                'Le mot de passe est obligatoire.',
+                $username,
+                $email
+            );
+
+            return;
+        }
+
+        if (strlen($password) < 8) {
+
+            $this->showRegisterError(
+                'Le mot de passe doit contenir au moins 8 caractères.',
+                $username,
+                $email
+            );
+
+            return;
+        }
+
+        // ===========================
+        // PSEUDO DÉJÀ UTILISÉ
+        // ===========================
+
+        if ($this->userManager->usernameExists($username)) {
+
+            $this->showRegisterError(
+                'Ce pseudo est déjà utilisé.',
+                $username,
+                $email
+            );
+
+            return;
+        }
+
+        // ===========================
+        // EMAIL DÉJÀ UTILISÉ
+        // ===========================
+
+        if ($this->userManager->emailExists($email)) {
+
+            $this->showRegisterError(
+                'Cette adresse email est déjà utilisée.',
+                $username,
+                $email
+            );
+
+            return;
+        }
+
+        // ===========================
+        // HASH DU MOT DE PASSE
         // ===========================
 
         $hashedPassword = password_hash(
@@ -106,7 +145,7 @@ class UserController
         );
 
         // ===========================
-        // Création utilisateur
+        // CRÉATION UTILISATEUR
         // ===========================
 
         $success = $this->userManager->createUser(
@@ -115,20 +154,20 @@ class UserController
             $hashedPassword
         );
 
-
         if (!$success) {
 
             $this->showRegisterError(
-                "Une erreur est survenue pendant l'inscription."
+                "Une erreur est survenue pendant l'inscription.",
+                $username,
+                $email
             );
 
             return;
         }
 
         // ===========================
-        // Redirection connexion
+        // REDIRECTION
         // ===========================
-
         header('Location: index.php?action=login');
         exit;
     }
@@ -138,6 +177,10 @@ class UserController
      */
     public function login(): void
     {
+        // ===========================
+        // AFFICHAGE DU FORMULAIRE
+        // ===========================
+
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
             $view = new View('Connexion');
@@ -146,13 +189,22 @@ class UserController
             return;
         }
 
+        // ===========================
+        // RÉCUPÉRATION DES DONNÉES
+        // ===========================
+
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
-        if (empty($email) || empty($password)) {
+        // ===========================
+        // VALIDATION EMAIL
+        // ===========================
+
+        if ($email === '') {
 
             $this->showLoginError(
-                'Tous les champs sont obligatoires.'
+                "L'adresse email est obligatoire.",
+                $email
             );
 
             return;
@@ -161,31 +213,61 @@ class UserController
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
             $this->showLoginError(
-                "L'adresse email n'est pas valide."
+                "L'adresse email n'est pas valide.",
+                $email
             );
 
             return;
         }
 
+        // ===========================
+        // VALIDATION MOT DE PASSE
+        // ===========================
+
+        if ($password === '') {
+
+            $this->showLoginError(
+                'Le mot de passe est obligatoire.',
+                $email
+            );
+
+            return;
+        }
+
+        // ===========================
+        // RECHERCHE UTILISATEUR
+        // ===========================
+
         $user = $this->userManager->getUserByEmail($email);
+
 
         if ($user === false) {
 
             $this->showLoginError(
-                'Adresse email ou mot de passe incorrect.'
+                'Adresse email ou mot de passe incorrect.',
+                $email
             );
 
             return;
         }
+
+        // ===========================
+        // VÉRIFICATION MOT DE PASSE
+        // ===========================
 
         if (!password_verify($password, $user['password'])) {
 
             $this->showLoginError(
-                'Adresse email ou mot de passe incorrect.'
+                'Adresse email ou mot de passe incorrect.',
+                $email
             );
 
             return;
         }
+
+        // ===========================
+        // CONNEXION
+        // ===========================
 
         session_regenerate_id(true);
 
@@ -196,31 +278,50 @@ class UserController
             'avatar' => $user['avatar']
         ];
 
+
+        // ===========================
+        // REDIRECTION
+        // ===========================
+
         header('Location: index.php?action=home');
         exit;
     }
 
     /**
-     * Réaffiche le formulaire avec un message d'erreur.
+     * Réaffiche le formulaire d'inscription
+     * avec un message d'erreur.
      */
-    private function showRegisterError(string $message): void
-    {
+    private function showRegisterError(
+        string $message,
+        string $username = '',
+        string $email = ''
+    ): void {
+
         $view = new View('Inscription');
 
         $view->render('register', [
-            'errorMessage' => $message
+            'errorMessage' => $message,
+            'username' => $username,
+            'email' => $email
         ]);
     }
 
     /**
      * Affiche une erreur de connexion.
      */
-    private function showLoginError(string $message): void
-    {
+    /**
+     * Affiche une erreur de connexion.
+     */
+    private function showLoginError(
+        string $message,
+        string $email = ''
+    ): void {
+
         $view = new View('Connexion');
 
         $view->render('login', [
-            'errorMessage' => $message
+            'errorMessage' => $message,
+            'email' => $email
         ]);
     }
 
@@ -294,15 +395,33 @@ class UserController
         $email = trim($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
-        if (empty($username) || empty($email)) {
+        // ===========================
+        // CHAMPS OBLIGATOIRES
+        // ===========================
+
+        if ($username === '') {
 
             $this->renderAccount(
                 $idUser,
-                "Le pseudo et l'adresse email sont obligatoires."
+                'Le pseudo est obligatoire.'
             );
 
             return;
         }
+
+        if ($email === '') {
+
+            $this->renderAccount(
+                $idUser,
+                "L'adresse email est obligatoire."
+            );
+
+            return;
+        }
+
+        // ===========================
+        // EMAIL
+        // ===========================
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
@@ -313,6 +432,10 @@ class UserController
 
             return;
         }
+
+        // ===========================
+        // PSEUDO DÉJÀ UTILISÉ
+        // ===========================
 
         if (
             $this->userManager->usernameExistsForOtherUser(
@@ -329,6 +452,10 @@ class UserController
             return;
         }
 
+        // ===========================
+        // EMAIL DÉJÀ UTILISÉ
+        // ===========================
+
         if (
             $this->userManager->emailExistsForOtherUser(
                 $email,
@@ -344,11 +471,15 @@ class UserController
             return;
         }
 
-        // Si le champ mot de passe est vide,
-        // l'ancien mot de passe reste inchangé.
+        // ===========================
+        // MOT DE PASSE
+        // ===========================
+
         $hashedPassword = null;
 
-        if (!empty($password)) {
+        // Le mot de passe est facultatif.
+        // S'il est vide, l'ancien est conservé.
+        if ($password !== '') {
 
             if (strlen($password) < 8) {
 
@@ -360,11 +491,16 @@ class UserController
                 return;
             }
 
+
             $hashedPassword = password_hash(
                 $password,
                 PASSWORD_DEFAULT
             );
         }
+
+        // ===========================
+        // MISE À JOUR
+        // ===========================
 
         $this->userManager->updateUser(
             $idUser,
@@ -373,7 +509,7 @@ class UserController
             $hashedPassword
         );
 
-        // Mise à jour des informations conservées dans la session.
+        // Mise à jour de la session.
         $_SESSION['user']['username'] = $username;
         $_SESSION['user']['email'] = $email;
 
