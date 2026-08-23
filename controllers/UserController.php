@@ -24,8 +24,20 @@ class UserController
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
+            $registrationSuccess =
+                $_SESSION['registration_success'] ?? false;
+
+            unset($_SESSION['registration_success']);
+
+            if ($registrationSuccess) {
+                header('Refresh: 2; URL=index.php?action=login');
+            }
+
             $view = new View('Inscription');
-            $view->render('register');
+
+            $view->render('register', [
+                'registrationSuccess' => $registrationSuccess
+            ]);
 
             return;
         }
@@ -166,9 +178,12 @@ class UserController
         }
 
         // ===========================
-        // REDIRECTION
+        // INSCRIPTION RÉUSSIE
         // ===========================
-        header('Location: index.php?action=login');
+
+        $_SESSION['registration_success'] = true;
+
+        header('Location: index.php?action=register');
         exit;
     }
 

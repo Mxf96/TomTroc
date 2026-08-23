@@ -76,7 +76,7 @@ header {
   display: block;
   width: 25px;
   height: 2px;
-  background-color: #292929;
+  background: #292929;
   transition:
     transform 0.3s ease,
     opacity 0.3s ease;
@@ -99,7 +99,7 @@ header {
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  background-color: #292929;
+  background: #292929;
   color: #ffffff;
   border-radius: 50px;
   font-size: 12px;
@@ -152,7 +152,7 @@ header .mobile-menu {
     z-index: 1000;
     width: 100%;
     padding: 15px 20px;
-    background-color: #ffffff;
+    background: #ffffff;
     border-top: 1px solid #eeeeee;
   }
 

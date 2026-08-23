@@ -3,7 +3,7 @@
 =========================== */
 
 footer {
-  background-color: #ffffff;
+  background: #ffffff;
   display: flex;
   justify-content: flex-end;
   align-items: center;

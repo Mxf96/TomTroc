@@ -3,7 +3,7 @@
 =========================== */
 
 .book-details {
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 /* ===========================
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   padding: 65px 85px;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 .book-details__content h1 {
@@ -93,7 +93,7 @@
   width: 25px;
   height: 1px;
   margin: 30px 0;
-  background-color: #a6a6a6;
+  background: #a6a6a6;
 }
 
 /* ===========================
@@ -134,7 +134,7 @@
   align-items: center;
   gap: 12px;
   padding: 6px 18px 6px 6px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 30px;
   color: #292929;
   text-decoration: none;
@@ -163,16 +163,17 @@
   max-width: 500px;
   height: 55px;
   margin-top: auto;
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
+  transition: background 0.3s ease;
 }
 
 .book-details__message:hover {
-  background-color: #009c5c;
+  background: #006d41;
 }
 
 /* ===========================

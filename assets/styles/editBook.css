@@ -5,7 +5,7 @@
 .edit-book {
   min-height: 100vh;
   padding: 40px 30px 80px;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 .edit-book__container {
@@ -51,7 +51,7 @@
   grid-template-columns: 1.15fr 1fr;
   gap: 100px;
   padding: 55px 55px 65px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -137,7 +137,7 @@
 .edit-book__field select {
   width: 100%;
   padding: 14px;
-  background-color: #edf2f5;
+  background: #edf2f5;
   border: 1px solid transparent;
   border-radius: 4px;
   font-family: inherit;
@@ -180,7 +180,7 @@
   max-width: 335px;
   height: 55px;
   margin-top: 5px;
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -192,7 +192,7 @@
 }
 
 .edit-book__button:hover {
-  background-color: #006d41;
+  background: #006d41;
 }
 
 /* ===========================
@@ -202,7 +202,7 @@
 .edit-book__error {
   margin: 0 0 25px;
   padding: 12px 15px;
-  background-color: #f8dddd;
+  background: #f8dddd;
   color: #a94442;
   border-radius: 5px;
   font-size: 11px;

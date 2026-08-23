@@ -106,10 +106,6 @@ class UserManager
             username,
             email,
             password,
-            firstname,
-            lastname,
-            phone,
-            description,
             avatar,
             created_at,
             updated_at
@@ -141,10 +137,6 @@ class UserManager
             id_user,
             username,
             email,
-            firstname,
-            lastname,
-            phone,
-            description,
             avatar,
             created_at,
             updated_at

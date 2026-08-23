@@ -5,7 +5,7 @@
 .add-book {
   min-height: 100vh;
   padding: 50px 30px 100px;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 /* ===========================
@@ -53,7 +53,7 @@
 .add-book__error {
   margin: 0 0 25px;
   padding: 12px 15px;
-  background-color: #fce8e8;
+  background: #fce8e8;
   color: #b3261e;
   border-radius: 5px;
   font-size: 12px;
@@ -68,7 +68,7 @@
   grid-template-columns: 1.15fr 1fr;
   gap: 100px;
   padding: 50px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -95,7 +95,7 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background-color: #edf2f5;
+  background: #edf2f5;
 }
 
 .add-book__image-preview {
@@ -183,7 +183,7 @@
 .add-book__field select {
   width: 100%;
   padding: 15px;
-  background-color: #edf2f5;
+  background: #edf2f5;
   color: #292929;
   border: 1px solid transparent;
   border-radius: 5px;
@@ -238,7 +238,7 @@
   max-width: 335px;
   height: 55px;
   margin-top: 10px;
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -250,7 +250,7 @@
 }
 
 .add-book__button:hover {
-  background-color: #006d41;
+  background: #006d41;
 }
 
 /* ===========================

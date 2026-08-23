@@ -2,65 +2,96 @@
     <!-- Partie formulaire -->
     <div class="login__form-container">
         <div class="login__form-content">
-            <h1>Inscription</h1>
 
-            <?php if (!empty($errorMessage)): ?>
-                <p class="login__error">
-                    <?= htmlspecialchars($errorMessage) ?>
+            <?php if (!empty($registrationSuccess)): ?>
+
+                <div class="login__success">
+                    <div class="login__success-icon">
+                        ✓
+                    </div>
+
+                    <p>
+                        Inscription réussie !
+                    </p>
+
+                    <span>
+                        Redirection vers la connexion...
+                    </span>
+                </div>
+
+            <?php else: ?>
+
+                <?php if (!empty($errorMessage)): ?>
+
+                    <p class="login__error">
+                        <?= htmlspecialchars($errorMessage) ?>
+                    </p>
+
+                <?php endif; ?>
+
+                <form
+                    class="login__form"
+                    action="index.php?action=register"
+                    method="POST"
+                    novalidate>
+
+                    <div class="login__field">
+                        <label for="username">
+                            Pseudo
+                        </label>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value="<?= htmlspecialchars($username ?? '') ?>"
+                            autocomplete="username">
+
+                    </div>
+
+                    <div class="login__field">
+                        <label for="email">
+                            Adresse email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="<?= htmlspecialchars($email ?? '') ?>"
+                            autocomplete="email">
+
+                    </div>
+
+                    <div class="login__field">
+                        <label for="password">
+                            Mot de passe
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            autocomplete="new-password">
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="login__button">
+
+                        S'inscrire
+                    </button>
+                </form>
+
+                <p class="login__connection">
+                    Déjà inscrit ?
+
+                    <a href="index.php?action=login">
+                        Connectez-vous
+                    </a>
                 </p>
             <?php endif; ?>
-
-            <form
-                class="login__form"
-                action="index.php?action=register"
-                method="POST"
-                novalidate>
-
-                <div class="login__field">
-                    <label for="username">Pseudo</label>
-
-                    <input
-                        type="text"
-                        id="username"
-                        name="username"
-                        value="<?= htmlspecialchars($username ?? '') ?>"
-                        autocomplete="username">
-                </div>
-
-                <div class="login__field">
-                    <label for="email">Adresse email</label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value="<?= htmlspecialchars($email ?? '') ?>"
-                        autocomplete="email">
-                </div>
-
-                <div class="login__field">
-                    <label for="password">Mot de passe</label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        autocomplete="new-password">
-                </div>
-
-                <button
-                    type="submit"
-                    class="login__button">
-                    S'inscrire
-                </button>
-            </form>
-
-            <p class="login__connection">
-                Déjà inscrit ?
-                <a href="index.php?action=login">
-                    Connectez-vous
-                </a>
-            </p>
         </div>
     </div>
 

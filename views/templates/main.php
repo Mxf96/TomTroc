@@ -34,18 +34,29 @@
     <link rel="stylesheet" href="./assets/styles/editBook.css">
     <link rel="stylesheet" href="./assets/styles/profile.css">
     <link rel="stylesheet" href="./assets/styles/addBook.css">
+    <link rel="stylesheet" href="./assets/styles/loader.css">
 </head>
 
 <body>
-    <?php require_once TEMPLATE_VIEW_PATH . 'header.php'; ?>
-    <main>
-        <?= $pageContent ?>
-    </main>
-    <?php require_once TEMPLATE_VIEW_PATH . 'footer.php'; ?>
+
+    <div class="page-loader" id="pageLoader">
+        <div class="page-loader__spinner"></div>
+    </div>
+
+    <div class="page-content" id="pageContent">
+        <?php require TEMPLATE_VIEW_PATH . 'header.php'; ?>
+
+        <main>
+            <?= $pageContent ?>
+        </main>
+
+        <?php require TEMPLATE_VIEW_PATH . 'footer.php'; ?>
+    </div>
 
     <script src="../../JS/menuBurger.js"></script>
     <script src="../../JS/dynamicSorting.js"></script>
     <script src="../../JS/previewIMG.js"></script>
+    <script src="../../JS/loadSpin.js"></script>
 </body>
 
 </html>

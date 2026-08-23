@@ -5,7 +5,7 @@
 .account {
   min-height: 100vh;
   padding: 60px 30px 90px;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 .account__container {
@@ -47,7 +47,7 @@
   align-items: center;
   min-height: 420px;
   padding: 45px 40px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -76,7 +76,7 @@
   width: 200px;
   height: 1px;
   margin: 35px 0;
-  background-color: #eeeeee;
+  background: #eeeeee;
 }
 
 .account__profile h2 {
@@ -129,7 +129,7 @@
 
 .account__information {
   padding: 40px 80px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -160,7 +160,7 @@
   width: 100%;
   height: 42px;
   padding: 0 12px;
-  background-color: #edf2f5;
+  background: #edf2f5;
   border: none;
   border-radius: 4px;
   font-family: inherit;
@@ -177,7 +177,7 @@
   height: 45px;
   margin-top: 5px;
   padding: 0 27px;
-  background-color: #ffffff;
+  background: #ffffff;
   color: #00ac66;
   border: 1px solid #00ac66;
   border-radius: 10px;
@@ -187,7 +187,7 @@
 }
 
 .account__save:hover {
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
 }
 
@@ -207,7 +207,7 @@
   align-items: center;
   height: 48px;
   padding: 0 15px;
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
   border-radius: 10px;
   font-size: 16px;
@@ -217,7 +217,7 @@
 }
 
 .account__add-book:hover {
-  background-color: #006d41;
+  background: #006d41;
 }
 
 /* ===========================
@@ -226,7 +226,7 @@
 
 .account__books {
   overflow: hidden;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -263,7 +263,7 @@
 }
 
 .account__book:nth-child(odd) {
-  background-color: #edf2f5;
+  background: #edf2f5;
 }
 
 /* Image */
@@ -304,11 +304,11 @@
 }
 
 .status--available {
-  background-color: #6dc5a5;
+  background: #6dc5a5;
 }
 
 .status--unavailable {
-  background-color: #c96b75;
+  background: #c96b75;
 }
 
 /* ===========================
@@ -353,12 +353,12 @@
 }
 
 .account__message--error {
-  background-color: #f8dddd;
+  background: #f8dddd;
   color: #a94442;
 }
 
 .account__message--success {
-  background-color: #e1f3eb;
+  background: #e1f3eb;
   color: #008b53;
 }
 
@@ -519,13 +519,13 @@
     min-width: 0;
     min-height: 220px;
     padding: 28px 25px;
-    background-color: #ffffff;
+    background: #ffffff;
     border-radius: 12px;
     font-size: 9px;
   }
 
   .account__book:nth-child(odd) {
-    background-color: #ffffff;
+    background: #ffffff;
   }
 
   .account__book-image {
@@ -616,13 +616,13 @@
     min-width: 0;
     min-height: 275px;
     padding: 38px 45px;
-    background-color: #ffffff;
+    background: #ffffff;
     border-radius: 15px;
     font-size: 10px;
   }
 
   .account__book:nth-child(odd) {
-    background-color: #ffffff;
+    background: #ffffff;
   }
 
   /* ===========================

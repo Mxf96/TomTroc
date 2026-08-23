@@ -9,7 +9,7 @@
   max-width: 1300px;
   min-height: calc(100vh - 85px);
   margin: 0 auto;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 /* ===========================
@@ -17,7 +17,7 @@
 =========================== */
 
 .messages__sidebar {
-  background-color: #ffffff;
+  background: #ffffff;
 }
 
 .messages__sidebar h1 {
@@ -54,7 +54,7 @@
 }
 
 .messages__conversation:hover {
-  background-color: #faf9f7;
+  background: #faf9f7;
 }
 
 .messages__conversation img {
@@ -211,7 +211,7 @@
 
 .message__bubble {
   padding: 12px 15px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 3px;
   font-size: 10px;
   line-height: 1.4;
@@ -219,7 +219,7 @@
 }
 
 .message--mine .message__bubble {
-  background-color: #edf2f5;
+  background: #edf2f5;
 }
 
 /* ===========================
@@ -238,7 +238,7 @@
 
   padding: 0 20px;
 
-  background-color: #ffffff;
+  background: #ffffff;
   border: 1px solid #eeeeee;
   border-radius: 5px;
   font-family: inherit;
@@ -256,7 +256,7 @@
 
 .messages__form button {
   height: 48px;
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -268,7 +268,7 @@
 }
 
 .messages__form button:hover {
-  background-color: #006d41;
+  background: #006d41;
 }
 
 /* ===========================
@@ -289,11 +289,11 @@
 =========================== */
 
 .messages__conversation--unread {
-  background-color: #edf2f5;
+  background: #edf2f5;
 }
 
 .messages__conversation--unread:hover {
-  background-color: #e5ecef;
+  background: #e5ecef;
 }
 
 .messages__conversation--unread .messages__conversation-name {
@@ -321,7 +321,7 @@
   min-width: 20px;
   height: 20px;
   padding: 0 6px;
-  background-color: #292929;
+  background: #292929;
   color: #ffffff;
   border-radius: 20px;
   font-size: 10px;
@@ -409,7 +409,7 @@
     width: 100%;
     min-height: calc(100vh - 70px);
     padding: 25px 20px;
-    background-color: #f5f3ef;
+    background: #f5f3ef;
   }
 
   /* ===========================

@@ -5,7 +5,7 @@
 .profile {
   min-height: 100vh;
   padding: 70px 30px 100px;
-  background-color: #f5f3ef;
+  background: #f5f3ef;
 }
 
 .profile__container {
@@ -27,7 +27,7 @@
   align-items: center;
   min-height: 570px;
   padding: 50px 40px;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -57,7 +57,7 @@
   width: 240px;
   height: 1px;
   margin: 65px 0 50px;
-  background-color: #eeeeee;
+  background: #eeeeee;
 }
 
 /* ===========================
@@ -123,7 +123,7 @@
   width: 215px;
   height: 55px;
   margin-top: 50px;
-  background-color: #ffffff;
+  background: #ffffff;
   color: #00ac66;
   border: 1px solid #00ac66;
   border-radius: 5px;
@@ -136,7 +136,7 @@
 }
 
 .profile__message:hover {
-  background-color: #00ac66;
+  background: #00ac66;
   color: #ffffff;
 }
 
@@ -146,7 +146,7 @@
 
 .profile__books {
   overflow: hidden;
-  background-color: #ffffff;
+  background: #ffffff;
   border-radius: 15px;
 }
 
@@ -187,7 +187,7 @@
 }
 
 .profile__book:nth-child(odd) {
-  background-color: #edf2f5;
+  background: #edf2f5;
 }
 
 /* ===========================
@@ -279,7 +279,7 @@
     flex-direction: column;
     gap: 18px;
     overflow: visible;
-    background-color: transparent;
+    background: transparent;
     border-radius: 0;
   }
 
@@ -298,12 +298,12 @@
     row-gap: 5px;
     min-height: 190px;
     padding: 30px;
-    background-color: #ffffff;
+    background: #ffffff;
     border-radius: 15px;
   }
 
   .profile__book:nth-child(odd) {
-    background-color: #ffffff;
+    background: #ffffff;
   }
 
   .profile__book-image {

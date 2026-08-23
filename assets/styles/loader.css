@@ -1,0 +1,47 @@
+.page-loader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f3ef;
+  z-index: 9999;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.page-loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Spinner */
+
+.page-loader__spinner {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #d9d5cf;
+  border-top-color: #00ac66;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Contenu */
+
+.page-content {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.page-content--visible {
+  opacity: 1;
+}
