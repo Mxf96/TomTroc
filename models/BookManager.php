@@ -285,6 +285,7 @@ class BookManager
         int $idUser,
         string $title,
         string $author,
+        string $image,
         string $description,
         string $status
     ): bool {
@@ -294,6 +295,7 @@ class BookManager
         SET
             title = :title,
             author = :author,
+            image = :image,
             description = :description,
             status = :status,
             updated_at = NOW()
@@ -303,13 +305,47 @@ class BookManager
 
         $statement = $this->db->prepare($sql);
 
-        $statement->bindValue(':title', $title, PDO::PARAM_STR);
-        $statement->bindValue(':author', $author, PDO::PARAM_STR);
-        $statement->bindValue(':description', $description, PDO::PARAM_STR);
-        $statement->bindValue(':status', $status, PDO::PARAM_STR);
+        $statement->bindValue(
+            ':title',
+            $title,
+            PDO::PARAM_STR
+        );
 
-        $statement->bindValue(':id_book', $idBook, PDO::PARAM_INT);
-        $statement->bindValue(':id_user', $idUser, PDO::PARAM_INT);
+        $statement->bindValue(
+            ':author',
+            $author,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':image',
+            $image,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':description',
+            $description,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':status',
+            $status,
+            PDO::PARAM_STR
+        );
+
+        $statement->bindValue(
+            ':id_book',
+            $idBook,
+            PDO::PARAM_INT
+        );
+
+        $statement->bindValue(
+            ':id_user',
+            $idUser,
+            PDO::PARAM_INT
+        );
 
         return $statement->execute();
     }

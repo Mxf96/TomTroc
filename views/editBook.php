@@ -38,6 +38,7 @@
 
                 <div class="edit-book__image">
                     <img
+                        id="bookImagePreview"
                         src="<?= htmlspecialchars($book['image']) ?>"
                         alt="<?= htmlspecialchars($book['title']) ?>">
                 </div>

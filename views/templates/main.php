@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="./assets/styles/login.css">
     <link rel="stylesheet" href="./assets/styles/messages.css">
     <link rel="stylesheet" href="./assets/styles/errorPage.css">
-    <link rel="stylesheet" href="./assets/styles/form.css">
     <link rel="stylesheet" href="./assets/styles/editBook.css">
     <link rel="stylesheet" href="./assets/styles/profile.css">
     <link rel="stylesheet" href="./assets/styles/addBook.css">
@@ -56,6 +55,7 @@
     <script src="../../JS/menuBurger.js"></script>
     <script src="../../JS/dynamicSorting.js"></script>
     <script src="../../JS/previewIMG.js"></script>
+    <script src="../../JS/previewIMGEdit.js"></script>
     <script src="../../JS/loadSpin.js"></script>
 </body>
 

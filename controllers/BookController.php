@@ -243,7 +243,6 @@ class BookController
 
         $idUser = (int) $_SESSION['user']['id_user'];
 
-
         // ===========================
         // RÉCUPÉRATION DU LIVRE
         // ===========================
@@ -255,7 +254,6 @@ class BookController
                 "Le livre demandé n'existe pas."
             );
         }
-
 
         // Vérifie que le livre appartient
         // à l'utilisateur connecté.
@@ -360,6 +358,50 @@ class BookController
         }
 
         // ===========================
+        // GESTION DE L'IMAGE
+        // ===========================
+
+        // Par défaut, conserve l'image actuelle.
+        $image = $book['image'];
+
+        // Une nouvelle image a été sélectionnée.
+        if (
+            isset($_FILES['image'])
+            && $_FILES['image']['error'] !== UPLOAD_ERR_NO_FILE
+        ) {
+
+            // Erreur pendant l'envoi.
+            if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+
+                $view = new View('Modifier un livre');
+
+                $view->render('editBook', [
+                    'book' => $book,
+                    'errorMessage' => "Une erreur est survenue lors de l'envoi de l'image."
+                ]);
+
+                return;
+            }
+
+            try {
+
+                $image = $this->uploadService->uploadBookImage(
+                    $_FILES['image']
+                );
+            } catch (Exception $e) {
+
+                $view = new View('Modifier un livre');
+
+                $view->render('editBook', [
+                    'book' => $book,
+                    'errorMessage' => $e->getMessage()
+                ]);
+
+                return;
+            }
+        }
+
+        // ===========================
         // MODIFICATION
         // ===========================
 
@@ -368,6 +410,7 @@ class BookController
             $idUser,
             $title,
             $author,
+            $image,
             $description,
             $status
         );

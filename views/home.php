@@ -42,7 +42,7 @@ $books = $books ?? [];
         <div class="home__books-list">
             <?php foreach ($books as $book): ?>
                 <article class="book-card">
-                    <a href="?page=book&id=<?= htmlspecialchars($book['id_book']) ?>">
+                    <a href="index.php?action=book&id=<?= (int) $book['id_book'] ?>">
                         <img
                             src="<?= htmlspecialchars($book['image']) ?>"
                             alt="<?= htmlspecialchars($book['title']) ?>">
@@ -114,7 +114,7 @@ $books = $books ?? [];
 
         </div>
 
-        <a href="?page=books" class="home__button home__button--outline">
+        <a href="index.php?action=books" class="home__button home__button--outline">
             Voir tous les livres
         </a>
 
