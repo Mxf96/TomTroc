@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 26 août 2026 à 11:04
+-- Généré le : jeu. 10 sep. 2026 à 11:32
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -75,7 +75,15 @@ CREATE TABLE IF NOT EXISTS `conversations` (
   `id_conversation` int NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id_conversation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `conversations`
+--
+
+INSERT INTO `conversations` (`id_conversation`, `created_at`) VALUES
+(1, '2026-09-10 13:29:42'),
+(2, '2026-09-10 13:31:11');
 
 -- --------------------------------------------------------
 
@@ -94,7 +102,16 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id_message`),
   KEY `id_user` (`id_user`),
   KEY `id_conversation` (`id_conversation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id_message`, `content`, `is_read`, `created_at`, `id_user`, `id_conversation`) VALUES
+(1, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eius quasi laudantium, minus non ab.', 1, '2026-09-10 13:30:03', 2, 1),
+(2, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In cupiditate deserunt illum, voluptates tempore quaerat, saepe dolore, sed fugit omnis cum doloremque natus possimus odio.', 0, '2026-09-10 13:30:44', 3, 1),
+(3, 'Lorem ipsum dolor sit amet consectetur adipisicing elit. In cupiditate deserunt illum, voluptates tempore quaerat, saepe dolore, sed fugit omnis cum doloremque natus possimus odio.', 0, '2026-09-10 13:31:14', 14, 2);
 
 -- --------------------------------------------------------
 
@@ -147,6 +164,16 @@ CREATE TABLE IF NOT EXISTS `users_conversation` (
   PRIMARY KEY (`id_user`,`id_conversation`),
   KEY `id_conversation` (`id_conversation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `users_conversation`
+--
+
+INSERT INTO `users_conversation` (`id_user`, `id_conversation`) VALUES
+(2, 1),
+(3, 1),
+(2, 2),
+(14, 2);
 
 --
 -- Contraintes pour les tables déchargées
